@@ -6,11 +6,11 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:47:55 by vcodrean          #+#    #+#             */
-/*   Updated: 2025/11/06 04:49:59 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/06 05:11:40 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+# ifndef LIBFT_H
 # define LIBFT_H
 
 # include <stdlib.h>
