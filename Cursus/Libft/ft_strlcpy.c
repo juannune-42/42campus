@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:38:34 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/05 03:45:30 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/10 05:21:24 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (len);
 	// devuelvo la longitud total de la cadena a crear (longitud de src)
 }
-
-hola
