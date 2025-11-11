@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:00:46 by juannune          #+#    #+#             */
-/*   Updated: 2025/10/07 12:16:27 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/10 23:26:23 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_menset(s, 0, n);
+	ft_memset(s, 0, n);
 }

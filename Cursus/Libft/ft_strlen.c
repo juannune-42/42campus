@@ -6,13 +6,13 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 11:32:45 by juannune          #+#    #+#             */
-/*   Updated: 2025/10/07 11:33:00 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/10 23:26:00 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
