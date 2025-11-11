@@ -1,73 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   prueba.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 23:17:50 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/10 23:35:50 by juannune         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char *ft_strdup(const char *s1)
 {
-    size_t    src_len;
-    size_t    dst_len;
+    char *dest;
+    size_t i;
     
-    /* getting the original lenth of src and dst */
-    src_len = ft_strlen(src);
-    dst_len = ft_strlen(dst);
-    /* this check can be ommited if you implement the strnlen function */
-    if (dst_len >= dstsize)
-        dst_len = dstsize;
-    /* if the dst_len is equal to dst_size
-     * this means that we don't need to concatenate anything since
-     * the dst already contains the maximum number of characters
+    /* allocating enough memory for s1 + 1 character
+     * for the NUL-terminating character
      */
-    if (dst_len == dstsize)
-        return (dstsize + src_len);
-    /* if dstsize is big enough to accomodate both src and dst */
-    if (src_len < dstsize - dst_len)
-    /* we used ft_memcpy again, since it works directly on memory
-     * addresses, we can offset the pointer of dst by dst_len so our
-     * dst pointer is now set at the end of dst, then we tell ft_memcpy to
-     * copy the content of src there for a maximum of src_len + 1
-     * character
-     */
-        ft_memcpy(dst + dst_len, src, src_len + 1);
-    else
+    dest = (char *) malloc(ft_strlen(s1) + 1);
+    if (!dest)
+        return (NULL);
+    i = 0;
+    /* looping over the whole s1 string */
+    while (s1[i])
     {
-    /* in this case, we do the same thing as above, we offset the dst 
-     * pointer by dst_len and then we copy src there
-     * this time, we copy dstsize - dst_len - 1 character
-     */
-        ft_memcpy(dst + dst_len, src, dstsize - dst_len - 1);
-    /* as with ft_strlcpy, we then NUL-terminate the string */
-        dst[dstsize - 1] = '\0';
+        /* copying the current s1 character into the same
+         * position in the dest string we allocated above
+         */
+        dest[i] = s1[i];
+        i++;
     }
-    /* finally, we return the original length of src + dst */
-    return (dst_len + src_len);
-}
-
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
-{
-    size_t srclen = ft_strlen(src);
-    size_t dstlen = ft_strlen(dst);
-
-    if (dstlen >= dstsize)
-        return (dstsize + srclen);
-
-    if (srclen < dstsize - dstlen)
-    {
-        ft_memcpy(dst + dstlen, src, srclen + 1);
-    }
-    else
-    {
-        ft_memcpy(dst + dstlen, src, dstsize - dstlen - 1);
-        dst[dstsize - 1] = '\0';
-    }
-    return dstlen + srclen;
+    /* setting the NUL-terminating character */
+    dest[i] = 0;
+    /* finally, we return the newly created string */
+    return (dest);
 }
