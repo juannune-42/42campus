@@ -1,29 +1,29 @@
-
 #include "libft.h"
 
-char *ft_strdup(const char *s1)
+char *ft_strjoin(const char *s1, const char *s2)
 {
-    char *dest;
-    size_t i;
+    char *res;
+    int i;
+    int j;
     
-    /* allocating enough memory for s1 + 1 character
-     * for the NUL-terminating character
-     */
-    dest = (char *) malloc(ft_strlen(s1) + 1);
-    if (!dest)
-        return (NULL);
     i = 0;
-    /* looping over the whole s1 string */
+    j = 0;
+    /* allocating the required memory */
+    res = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+    if (!res)
+        return (NULL);
+    /* copying s1 into our res string */
     while (s1[i])
-    {
-        /* copying the current s1 character into the same
-         * position in the dest string we allocated above
-         */
-        dest[i] = s1[i];
-        i++;
-    }
-    /* setting the NUL-terminating character */
-    dest[i] = 0;
-    /* finally, we return the newly created string */
-    return (dest);
+        res[j++] = s1[i++];
+    /* we have to reset i to 0, otherwise we won't copy s2
+     * from the start
+     */
+    i = 0;
+    /* copying s2 into our res string */
+    while (s2[i])
+        res[j++] = s2[i];
+    /* !! don't forget to NUL-terminate the string !! */
+    res[j] = 0;
+    /* finallly, we can return the new string */
+    return (res);
 }
