@@ -6,13 +6,13 @@
 #    By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 14:59:00 by vcodrean          #+#    #+#              #
-#    Updated: 2025/11/06 05:10:55 by juannune         ###   ########.fr        #
+#    Updated: 2025/11/21 03:49:00 by juannune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = gcc
+CC = cc
 CCFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -47,17 +47,30 @@ MY_SOURCES =	ft_isdigit.c\
 				ft_putnbr_fd.c\
 				ft_itoa.c\
 				ft_strrchr.c\
-				ft_strmapi.c\
-				ft_striteri.c\
-				ft_split.c
+                ft_strmapi.c\
+                ft_striteri.c\
+                ft_split.c
 
+MY_SOURCES_BONUS =    ft_lstnew.c\
+                      ft_lstadd_front.c\
+                      ft_lstsize.c\
+                      ft_lstlast.c\
+                      ft_lstadd_back.c\
+                      ft_lstdelone.c\
+                      ft_lstclear.c\
+                      ft_lstiter.c\
+                      ft_lstmap.c
 
 OBJS = $(MY_SOURCES:.c=.o)
+OBJS_BONUS = $(MY_SOURCES_BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar crs $(NAME) $(OBJS)
+
+bonus: $(OBJS) $(OBJS_BONUS)
+	@ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 %.o: %.c
 	@$(CC) $(CCFLAGS) -c -o $@ $<
