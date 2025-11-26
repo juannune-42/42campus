@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:22:16 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/11 23:06:09 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/26 03:59:00 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str = (char *)malloc(len + 1);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
+	i = -1;
+	while (++i < len)
 		str[i] = s[start + i];
-		i++;
-	}
 	str[i] = '\0';
 	return (str);
 }

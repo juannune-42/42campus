@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 00:21:46 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/12 00:30:53 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/26 04:09:16 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!trimmed)
 		return (NULL);
-	k = 0;
-	while (k < len)
-	{
+	k = -1;
+	while (++k < len)
 		trimmed[k] = s1[start + k];
-		k++;
-	}
 	return (trimmed);
 }
