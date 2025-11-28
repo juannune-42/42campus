@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 06:50:44 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/11 17:23:48 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/27 04:13:10 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*tmp;
-	size_t	total;
 
-	total = count * size;
-	tmp = malloc(total);
+	tmp = malloc(count * size);
 	if (!tmp)
 		return (NULL);
-	ft_memset(tmp, 0, total);
+	ft_memset(tmp, 0, count * size);
 	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 23:01:38 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/11 23:23:37 by juannune         ###   ########.fr       */
+/*   Updated: 2025/11/27 04:38:40 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ static int	int_len(long nbr)
 {
 	int	count;
 
-	count = 0;
+	count = (nbr <= 0);
 	if (nbr <= 0)
-	{
-		count = 1;
 		nbr = -nbr;
-	}
 	while (nbr > 0)
 	{
 		nbr /= 10;
@@ -43,13 +40,11 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	long	num;
-	int		len;
 
-	len = int_len(n);
-	str = (char *)malloc(len + 1);
+	str = (char *)malloc(int_len(n) + 1);
 	if (!str)
 		return (NULL);
-	str[len] = '\0';
+	str[int_len(n)] = '\0';
 	num = n;
 	if (num < 0)
 	{
@@ -61,6 +56,6 @@ char	*ft_itoa(int n)
 		str[0] = '0';
 		return (str);
 	}
-	fill_number_str(str, num, len);
+	fill_number_str(str, num, int_len(n));
 	return (str);
 }
