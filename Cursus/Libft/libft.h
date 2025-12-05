@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:47:55 by vcodrean          #+#    #+#             */
-/*   Updated: 2025/11/28 02:52:32 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/01 02:21:45 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 

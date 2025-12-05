@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:46:55 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/16 22:46:58 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/01 22:23:46 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ void	ft_putnbra(char nb)
 void	ft_putnbr(int nb)
 {
 	if (nb == -2147483648)
-	{
-		ft_putnbra('-');
-		ft_putnbra(2 + '0');
-		ft_putnbr(147483648);
-	}
+		write(1, "-2147483648", 11);
 	else if (nb < 0)
 	{
 		ft_putnbra('-');
@@ -36,7 +32,5 @@ void	ft_putnbr(int nb)
 		ft_putnbra(nb % 10 + '0');
 	}
 	else
-	{
 		ft_putnbra(nb + '0');
-	}
 }
