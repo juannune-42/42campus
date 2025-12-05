@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:48:32 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/18 14:48:34 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:52:19 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_swap(int *a, int *b)
 {
-	int	nuisance;
+	int	temp;
 
-	nuisance = *a;
+	temp = *a;
 	*a = *b;
-	*b = nuisance;
+	*b = tmp;
 }

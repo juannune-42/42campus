@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:07:55 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/18 15:08:00 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:40:29 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <unistd.h>
 
 void	ft_ft(int *nbr);
 

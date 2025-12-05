@@ -6,30 +6,20 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 00:54:22 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/02 05:35:33 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:23:47 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void	print_number(int *num, int n)
 {
-	int	i;
-
-	i = -1;
-	while (++i < n)
-		ft_putchar(num[i] + '0');
+	while (n--)
+		write(1, (char []){*num++ + '0'}, 1);
 }
 
 void	rec_comb(int n, int pos, int start, int *num)
 {
-	int	i;
-
 	if (pos == n)
 	{
 		print_number(num, n);
@@ -37,11 +27,10 @@ void	rec_comb(int n, int pos, int start, int *num)
 			write(1, ", ", 2);
 		return ;
 	}
-	i = start;
-	while (i <= 9)
+	while (start <= 9)
 	{
-		num[pos] = i;
-		rec_comb(n, pos + 1, 1 + i++, num);
+		num[pos] = start;
+		rec_comb(n, 1 + pos, ++start, num);
 	}
 }
 
@@ -54,7 +43,8 @@ void	ft_print_combn(int n)
 	rec_comb(n, 0, 0, num);
 }
 
-/*void	ft_print_combn(int n)
+/*
+void	ft_print_combn(int n)
 {
 	int	num[9];
 	int	i;
@@ -77,4 +67,5 @@ void	ft_print_combn(int n)
 		while (++i < n)
 			num[i] = num[i - 1] + 1;
 	}
-}*/
+}
+*/

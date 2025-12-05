@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:07:55 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/18 15:08:00 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:45:39 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(void)
 
 	a = 4;
 	b = 2;
-	printf("%d %d\n", a, b);
+	printf("%d%d\n", a, b);
 	ft_swap(&a, &b);
-	printf("%d% d\n", a, b);
+	printf("%d%d\n", a, b);
 	return (0);
 }

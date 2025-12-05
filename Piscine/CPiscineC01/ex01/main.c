@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:07:55 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/24 10:08:00 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:42:09 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_ultimate_ft(int *********nbr);
 int	main(void)
 {
 	int	a;
-	int	*p1 = &a;
+	int	*p1;
 	int	**p2;
 	int	***p3;
 	int	****p4;

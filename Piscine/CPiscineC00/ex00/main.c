@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 14:42:59 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/29 04:16:47 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:39:11 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@ void	ft_putchar(char c);
 
 int	main(int argc, char **argv)
 {
-	if (argc < 2)
-		return (0);
-	ft_putchar(argv[1][0]);
+	if (argc > 1)
+		ft_putchar(argv[1][0]);
     return (0);
 }
