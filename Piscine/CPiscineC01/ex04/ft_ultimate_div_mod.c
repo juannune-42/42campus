@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.c      +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:50:07 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/18 14:50:09 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/10 20:46:32 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_ultimate_div_mod(int *a, int *b)
 {
-	int	nuisance;
+	int	tmp;
 
-	nuisance = *a;
-	*a = *a / *b;
-	*b = nuisance % *b;
+	tmp = *a;
+	*a /= *b;
+	*b = tmp % *b;
 }

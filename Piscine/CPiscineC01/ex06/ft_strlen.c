@@ -6,12 +6,9 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:51:36 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/23 14:23:00 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:05:26 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
