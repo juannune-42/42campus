@@ -6,24 +6,46 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 03:26:49 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/29 04:04:46 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/13 01:44:07 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_print.h"
 
-int	ft_printf(const char *c)
+static void	ft_conversion(va_list arg, char funct, int *len)
 {
-	while (*c)
-		write(1, c++, 1);
-	return (0);
+	if (funct == '%')
+		*len += write(1, "%", 1);
+	else if (funct == 'c')
+		*len += ft_putchar((char)va_arg(arg, int));
+	else if (funct == 's')
+		*len += ft_putstr(va_arg(arg, char *));
+	else if (funct == 'p')
+		*len += ft_putp(va_arg(arg, void *));
+	else if (funct == 'd' || funct == 'i')
+		*len += ft_putnbr(va_arg(arg, int));
+	else if (funct == 'u')
+		*len += ft_putunsigned(va_arg(arg, unsigned int));
+	else if (funct == 'x')
+		*len += ft_puthex(va_arg(arg, unsigned int), "0123456789abcdef");
+	else if (funct == 'X')
+		*len += ft_puthex(va_arg(arg, unsigned int), "0123456789ABCDEF");
 }
 
-int	main(void)
+int	ft_printf(const char *str, ...)
 {
-	char	*c;
+	va_list	arg;
+	int		len;
 
-	c = "hola mundo";
-	ft_printf(c);
-	return (0);
+	va_start(arg, str);
+	len = 0;
+	while (*str)
+	{
+		if (*str++ == '%' && *str)
+			ft_conversion(arg, *str++, &len);
+		else
+			len += write(1, str++, 1);
+	}
+	va_end(arg);
+	return (len);
 }
