@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsign.c                                     :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 01:40:01 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/13 02:03:27 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/13 03:04:06 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsinged(unsigned int nbr)
+int	ft_putunsigned(unsigned int nbr)
 {
 	if (nbr > 9)
 		return (ft_putunsigned(nbr / 10) + ft_putunsigned(nbr % 10));

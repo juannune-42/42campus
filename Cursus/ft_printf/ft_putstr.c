@@ -6,13 +6,13 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 00:28:27 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/13 00:36:30 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/13 03:03:13 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 

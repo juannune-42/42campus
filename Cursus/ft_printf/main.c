@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 23:55:09 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/13 03:09:35 by juannune         ###   ########.fr       */
+/*   Created: 2025/12/13 03:08:43 by juannune          #+#    #+#             */
+/*   Updated: 2025/12/13 03:57:13 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdlib.h>
 
-int	ft_putchar(char arg)
+int	main(int argc, char **argv)
 {
-	return (write(1, &arg, 1));
+	if (argc > 1)
+		ft_printf(argv[1], argv[2]);
+    return (0);
 }
