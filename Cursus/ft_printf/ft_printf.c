@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 03:26:49 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/13 03:01:56 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:05:54 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_printf(const char *str, ...)
 	len = 0;
 	while (*str)
 	{
-		if (*str++ == '%' && *str)
+		if (*str == '%' && *++str)
 			ft_conversion(arg, *str++, &len);
 		else
 			len += write(1, str++, 1);
