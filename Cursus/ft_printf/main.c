@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 03:08:43 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/16 18:05:37 by juannune         ###   ########.fr       */
+/*   Updated: 2025/12/19 13:35:06 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	main(int argc, char **argv)
+int	main()
 {
-	if (argc > 1)
-	{
-		printf(" %p %p \n", (void *)0, (void *)0);
-		printf("\n");
-		ft_printf(" %p %p \n", 0, 0);
-		printf("\n");
-		printf(" NULL %s NULL \n", (char *)NULL);
-		printf("\n");
-		ft_printf(" NULL %s NULL \n", (char *)NULL);
-		printf("\n");
-		printf(argv[1], argv[2]);
-		printf("\n");
-		ft_printf(argv[1], argv[2]);
-	}
+	ft_printf("|% d|", 10);
+	printf("|% d|", 10);
 	return (0);
 }

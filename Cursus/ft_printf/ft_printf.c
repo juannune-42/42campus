@@ -6,16 +6,27 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 03:26:49 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/16 17:05:54 by juannune         ###   ########.fr       */
+/*   Updated: 2026/01/06 04:02:13 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_conversion(va_list arg, char funct, int *len)
+// char ft_bonus_conversion(va_list arg, char funct, int *len)
+// {
+// 	if (funct == ' ')
+// 	{
+// 		if (++funct == 'd' || funct == 'i')
+// 			if (va_arg(arg, int) > -1)
+// 				*len += write(1, " ", 1);
+// 	}
+// 	return (funct);
+// }
+
+static void	ft_conversion_specifier(va_list arg, char funct, int *len)
 {
 	if (funct == '%')
-		*len += write(1, "%", 1);
+		return(write(1, "%", 1)); //como prueba
 	else if (funct == 'c')
 		*len += ft_putchar((char)va_arg(arg, int));
 	else if (funct == 's')
@@ -32,6 +43,19 @@ static void	ft_conversion(va_list arg, char funct, int *len)
 		*len += ft_puthex(va_arg(arg, unsigned int), "0123456789ABCDEF");
 }
 
+static void	ft_conversion_flag(va_list arg, char funct, int *len)
+{
+	if (funct == '-')
+		else if (funct == '0') else if (funct == '') else if (funct == '') else if (funct == '-')
+}
+
+int	ft_conversion(va_list arg, char funct, int *len)
+{
+	return (ft_conversion_flag(arg, funct, len) + ft_conversion_width(arg,
+			funct, len) + ft_conversion_presicion(arg, funct, len)
+		+ ft_conversion_specifier(arg, funct, len))
+}
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	arg;
@@ -42,7 +66,7 @@ int	ft_printf(const char *str, ...)
 	while (*str)
 	{
 		if (*str == '%' && *++str)
-			ft_conversion(arg, *str++, &len);
+			len += ft_conversion(arg, *str++, &len);
 		else
 			len += write(1, str++, 1);
 	}
