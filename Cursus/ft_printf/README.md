@@ -1,53 +1,35 @@
-This proyect has been created as part of the 42 curriculum by juannune
+*This proyect has been created as part of the 42 curriculum by juannune.*
+***
+# ft_printf
+## Description
+The **ft_printf** function recreates the standrad C **printf()** using variadic functions "**va_list**". It handles specifiers (cspdiuxX%) and bonus flags (-0.# +, width, precision) via direct **write** calls, returning printed chars count. Modular design reuses libft functions.
 
-Description
+## Instructions
+```
+make	# ft_printf.h + libftprintf.a (mandatory specifiers)
+make bonus	# + flags/width/precision
+ar rcs libftprintf.a *.o
+ggc main.c -L. -lfprintf -o test
+./test	# Usage: ft_print("Num: %d, hex: %x\n", 42, 255);
+```
+## Algorithm & Data Structures
+* **Parser**: Scans format string linearly, detecs "**%**", extracts flags/width/precision via state machine, dispatches to type-specific handlers. O(n) time, single pass.
+* **Dispatch table**: Function pointers array indexed by specifier char (**handlers['d'] = print_nbr**).
+* **Flags storage**: Bitfield "**uint8_t flags** (**1<<0 for '-', 1<<1 for '0',etc.**) for 0(1) checks.
+* **Numbers**: Recursive "**ft_putnbr_base()**" for u/xX. Precision/padding via temp string pre-formatting.
+* **No global buffer**.
+## Resources
+* [**man 3 printf**](https://man7.org/linux/man-pages/man3/printf.3.html) (format specifiers/flags)
+* [**man 3 va_start**](https://manpages.debian.org/testing/manpages-es-dev/va_start.3) va_arg va_end (variadics)
+* [**42 subject PDF**](https://cdn.intra.42.fr/pdf/pdf/189888/en.subject.pdf) (mandatory vs bonus scope)
+# ft_printf
 
-Instructions
-
-Resources
-
-A README.md file must be provided at the root of your Git repository. Its purpose is
-to allow anyone unfamiliar with the project (peers, staff, recruiters, etc.) to quickly
-understand what the project is about, how to run it, and where to find more information
-on the topic.
-The README.md must include at least:
-• The very first line must be italicized and read: This project has been created as part
-of the 42 curriculum by <login1>[, <login2>[, <login3>[...]]].
-• A “Description” section that clearly presents the project, including its goal and a
-brief overview.
-• An “Instructions” section containing any relevant information about compilation,
-installation, and/or execution.
-• A “Resources” section listing classic references related to the topic (documen-
-tation, articles, tutorials, etc.), as well as a description of how AI was used —
-specifying for which tasks and which parts of the project.
-➠ Additional sections may be required depending on the project (e.g., usage
-examples, feature list, technical choices, etc.).
-Any required additions will be explicitly listed below.
-• A detailed explanation and justification of the chosen algorithm and data structure
-must also be included.
-The choice of language is at your discretion.
-write in English, but it is not mandatory. :smile 
-
-This proyect has been created as part of the 42 curriculum by juannune.
-
-
-
-# Description
-
-# Instructions
-
-# Resources
-
-ft_printf
-Description
+## Description
 
 ft_printf is a custom implementation of the standard C library function printf.
 Its goal is to reproduce the behavior of printf for a subset of the most commonly used format specifiers while respecting 42’s Norm and project constraints.​
 
 The project is also an introduction to variadic functions in C (using va_start, va_arg, va_end) and to designing modular, extensible code that can be reused across future 42 projects (e.g., by integrating ft_printf into libft).​
-Instructions
-Compilation
-
 
 Expected structure:
 
