@@ -1,218 +1,55 @@
-*This proyect has been created as part of the 42 curriculum by juannune.*
+*This project has been created as part of the 42 curriculum by juannune.*
 ***
 # ft_printf
+
 ## Description
-The **ft_printf** function recreates the standrad C **printf()** using variadic functions "**va_list**". It handles specifiers (cspdiuxX%) and bonus flags (-0.# +, width, precision) via direct **write** calls, returning printed chars count. Modular design reuses libft functions.
+The goal of **ft_printf** function is to recreate the standard C **printf()** from **<stdio.h>** using variadic functions "**va_list**". It handles specifiers (cspdiuxX%) and bonus flags (-0.# +, width, precision) via direct **write** calls, returning printed chars count.
 
 ## Instructions
 ```
-make	# ft_printf.h + libftprintf.a (mandatory specifiers)
-make bonus	# + flags/width/precision
-ar rcs libftprintf.a *.o
-ggc main.c -L. -lfprintf -o test
-./test	# Usage: ft_print("Num: %d, hex: %x\n", 42, 255);
+make        # Build the library, aoutputs **libftprintf.a**
+make clean  # Clean objects files
+make fclean # Full clean (objects + library)
+make re     # Rebuild
+./test;
 ```
-## Algorithm & Data Structures
-* **Parser**: Scans format string linearly, detecs "**%**", extracts flags/width/precision via state machine, dispatches to type-specific handlers. O(n) time, single pass.
-* **Dispatch table**: Function pointers array indexed by specifier char (**handlers['d'] = print_nbr**).
-* **Flags storage**: Bitfield "**uint8_t flags** (**1<<0 for '-', 1<<1 for '0',etc.**) for 0(1) checks.
-* **Numbers**: Recursive "**ft_putnbr_base()**" for u/xX. Precision/padding via temp string pre-formatting.
-* **No global buffer**.
-## Resources
-* [**man 3 printf**](https://man7.org/linux/man-pages/man3/printf.3.html) (format specifiers/flags)
-* [**man 3 va_start**](https://manpages.debian.org/testing/manpages-es-dev/va_start.3) va_arg va_end (variadics)
-* [**42 subject PDF**](https://cdn.intra.42.fr/pdf/pdf/189888/en.subject.pdf) (mandatory vs bonus scope)
-# ft_printf
 
-## Description
-
-ft_printf is a custom implementation of the standard C library function printf.
-Its goal is to reproduce the behavior of printf for a subset of the most commonly used format specifiers while respecting 42’s Norm and project constraints.​
-
-The project is also an introduction to variadic functions in C (using va_start, va_arg, va_end) and to designing modular, extensible code that can be reused across future 42 projects (e.g., by integrating ft_printf into libft).​
-
-Expected structure:
-
-    Makefile
-
-    ft_printf.h
-
-    *.c source files (and possibly subfolders)
-
-    Optionally: libft/ with your libft sources and Makefile if used.​
-
-Basic usage:
-
-bash
-# Build the library
-make
-
-# Clean object files
-make clean
-
-# Full clean (objects + library)
-make fclean
-
-# Rebuild
-make re
-
-The Makefile must:
-
-    Use cc with the flags -Wall -Wextra -Werror.
-
-    Not relink unnecessarily.
-
-    Provide at least the rules: $(NAME), all, clean, fclean, re.​
-
-Linking and usage
-
-To use ft_printf in your program:
-
-bash
-cc -Wall -Wextra -Werror main.c libftprintf.a -o test
-
-Example main.c:
-
-c
+# Basic Usage
+for example, let's create a basic main.c file.
+```
+//Include the header
 #include "ft_printf.h"
 
 int main(void)
 {
-    int len;
-
-    len = ft_printf("Hello %s, number: %d, hex: %x\n", "world", 42, 42);
-    ft_printf("Printed %d characters\n", len);
+    // call the function
+    ft_printf("Testing ft_printf!");
     return (0);
 }
+```
+Compile the **main.c** file with the ft_printf library and run the program:
+```
+cc -Wall -Wextra -Werror main.c libft_printf.a -o test
+```
 
-Supported conversions
+## Algorithm and Design Choices
+ft_printf iterates through the format string character by character using a loop. When a '%' is found, it parses flags (e.g., -, 0, #, +, width, precision), then identifies the specifier (c, s, p, d, i, u, x, X, %) and dispatches to handler functions via va_list (va_start, va_arg, va_end).
 
-ft_printf must implement the following format specifiers, with behavior mimicking the original printf as closely as possible (excluding buffer management):​
+- **Variadics handling**: va_list stores variable args after the format string; va_arg advances the pointer by specifier type size (e.g., int for %d, char* for %s). Justification: Matches man 3 va_start for efficient, stack-based access without fixed args.
+- **Parsing**: State machine-like loop checks '%' then flags/specifier sequentially. No data structures (arrays/trees) needed; simple char checks suffice for efficiency and low overhead. Handles bonuses by applying padding/precision before write().
+- **Printing**: Direct write(1, ...) calls for chars/strings; recursive helpers for numbers (e.g., base conversion for x/X/u). Counter passed by pointer to track total chars returned. Justification: Mimics printf's int return for error checking; avoids stdio for speed/control.
 
-    %c : Prints a single character.
+This design prioritizes minimalism, correctness over libc printf, and extensibility for bonuses.
 
-    %s : Prints a NUL-terminated string.
 
-    %p : Prints a void * pointer in hexadecimal, usually with a 0x prefix.
+## Resources
+* [**Gitbook**](https://42-cursus.gitbook.io/guide/1-rank-01/ft_printf)
+* [**man 3 printf**](https://man7.org/linux/man-pages/man3/printf.3.html) (format specifiers/flags)
+* [**man 3 va_start**](https://manpages.debian.org/testing/manpages-es-dev/va_start.3) va_arg va_end (variadics)
+* [**42 subject PDF**](https://cdn.intra.42.fr/pdf/pdf/189888/en.subject.pdf) (mandatory vs bonus scope)
+***
 
-    %d : Prints a signed decimal integer (base 10).
-
-    %i : Same as %d.
-
-    %u : Prints an unsigned decimal integer (base 10).
-
-    %x : Prints an unsigned integer in lowercase hexadecimal (base 16).
-
-    %X : Prints an unsigned integer in uppercase hexadecimal (base 16).
-
-    %% : Prints a percent sign.​
-
-The prototype is:
-
-c
-int ft_printf(const char *format, ...);
-
-The return value is the total number of characters written, or a negative value in case of error (following standard printf behavior as closely as the subject and your design allow).​
-Algorithm and design
-High-level approach
-
-    Parsing loop
-
-        Iterate over the format string character by character.
-
-        When a '%' is encountered, parse the next character as a conversion specifier.
-
-        Otherwise, print the character directly and increase the printed length counter.
-
-    Variadic argument handling
-
-        Use a va_list to access the variable arguments:
-
-            va_start(ap, format);
-
-            va_arg(ap, type);
-
-            va_end(ap);​
-
-    Dispatcher per specifier
-
-        Implement a small dispatcher that, given the specifier (c/s/p/d/i/u/x/X/%), calls the corresponding helper function:
-
-            print_char
-
-            print_string
-
-            print_pointer
-
-            print_signed
-
-            print_unsigned
-
-            print_hex_lower
-
-            print_hex_upper
-
-            print_percent
-
-    Counting printed characters
-
-        Each helper returns the number of characters printed or an error indicator.
-
-        ft_printf accumulates this count and returns the total.
-
-Internal data structures
-
-    The project can be implemented without complex data structures; a simple state machine over the format string is sufficient.
-
-    A small enum or set of functions for each specifier keeps the code modular and extensible for the bonus part (flags, width, precision).​
-
-Error handling
-
-    Check the result of write when printing to stdout.
-
-    Propagate errors up to ft_printf when appropriate, so it can return a negative value.
-
-    Ensure all memory allocated dynamically (if any) is freed before returning.​
-
-Bonus (optional)
-
-If the mandatory part is 100% correct and complete, the project allows implementing extra features:​
-
-    Flags and width:
-
-        - (left-justify)
-
-        0 (zero padding)
-
-        . (precision)
-
-        Minimum field width
-
-    Additional flags:
-
-        # (alternate form, e.g. 0x prefix)
-
-        space ( )
-
-        + (explicit sign)
-
-The recommended approach is to design the core parser with future extension in mind (e.g. a struct storing flags, width, precision, type), but remember: the bonus is evaluated only if the mandatory part is perfect.​
-Resources
-
-This section lists classic references and briefly describes how AI was used, as required by the subject.​
-Documentation and articles
-
-    C standard library references for printf and variadic functions (stdarg.h).​
-
-    Online tutorials on:
-
-        Variadic functions (va_start, va_arg, va_end).
-
-        Number-to-string conversion in different bases (decimal, hex).​
-
-    42 intranet resources and forum discussions related to ft_printf, project expectations, and common pitfalls.​
-
-Use of AI in this project
+##### Use of AI in this project
 
     AI was used only for meta-support, not for producing project code:
 
@@ -221,5 +58,3 @@ Use of AI in this project
         To get help drafting and structuring this README.md (sections, wording, explanation of algorithm and design choices).​
 
     All C code, algorithms, parsing logic, and implementation decisions were written, tested, and debugged manually without copying AI-generated code into the repository, in line with 42’s AI usage rules and the project’s AI instructions.​
-
-You can extend this README with more sections (e.g., Usage examples, Testing strategy, Known limitations) as your implementation evolves.

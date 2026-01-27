@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 03:08:43 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/19 13:35:06 by juannune         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:47:19 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "ft_printf.h"
 
-int	main()
+int	main(void)
 {
-	ft_printf("|% d|", 10);
-	printf("|% d|", 10);
+	ft_printf("%d\n", 10);
+	printf("%d\n", 10);
 	return (0);
 }

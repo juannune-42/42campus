@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 18:50:34 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/11 23:05:03 by juannune         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:46:15 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	while (s2[i])
 		res[j++] = s2[i++];
-	res[j] = 0;
+	res[j] = '\0';
 	return (res);
 }
