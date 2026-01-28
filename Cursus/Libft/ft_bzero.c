@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:00:46 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/10 23:26:23 by juannune         ###   ########.fr       */
+/*   Updated: 2026/01/28 02:59:11 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *str, size_t n)
 {
-	ft_memset(s, 0, n);
+	ft_memset(str, 0, n);
 }
