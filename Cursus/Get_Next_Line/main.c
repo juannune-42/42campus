@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 02:40:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/01/31 04:02:05 by juannune         ###   ########.fr       */
+/*   Created: 2026/01/27 14:28:14 by juannune          #+#    #+#             */
+/*   Updated: 2026/01/31 04:02:30 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-# include <stdlib.h>
-# include <unistd.h>
+int	main(void)
+{
+	int		fd;
+	char	*line;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
-
-#endif
+	fd = open("test.txt", O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error");
+		return (1);
+	}
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (0);
+}
