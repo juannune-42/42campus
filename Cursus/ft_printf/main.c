@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/13 03:08:43 by juannune          #+#    #+#             */
-/*   Updated: 2026/01/23 11:47:19 by juannune         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include "ft_printf.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "ft_printf.h"
 
-int	main(void)
+int	main()
 {
-	ft_printf("%d\n", 10);
-	printf("%d\n", 10);
+	ft_printf("|%u|", -1);
+	printf("|%u|", -1);
 	return (0);
 }

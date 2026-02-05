@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 05:24:49 by juannune          #+#    #+#             */
-/*   Updated: 2026/01/31 05:37:10 by juannune         ###   ########.fr       */
+/*   Updated: 2026/02/05 13:13:53 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # endif
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 
