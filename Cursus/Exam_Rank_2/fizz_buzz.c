@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   fizz_buzz.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 02:40:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/07 02:18:17 by juannune         ###   ########.fr       */
+/*   Created: 2026/02/11 03:32:43 by juannune          #+#    #+#             */
+/*   Updated: 2026/02/11 04:04:12 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <unistd.h>
 
-# include <stdlib.h>
-# include <unistd.h>
+void	putnbr(int i)
+{
+	if (i >= 10)    putnbr(i / 10);
+	write(1, &"0123456789"[i% 10], 1);
+}
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
-
-#endif
+int	main(void)
+{
+	for (int i = 1; i < 101; i++)
+	{
+        if (!(i % 15)) write(1, "fizzbuzz", 8);
+		else if (!(i % 5)) write(1, "buzz", 4);
+		else if (!(i % 3)) write(1, "fizz", 4);
+		else    putnbr(i);
+		write(1, "\n", 1);
+	}
+	return (0);
+}

@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 02:40:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/07 02:18:17 by juannune         ###   ########.fr       */
+/*   Created: 2026/02/13 03:31:44 by juannune          #+#    #+#             */
+/*   Updated: 2026/02/13 04:04:02 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <unistd.h>
 
-# include <stdlib.h>
-# include <unistd.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
-
-#endif
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+        return(write(1, "\n", 1));
+    while (*argv[1]++);
+    argv[1]-= 2;
+    while (*argv[1])
+        write(1, argv[1]--, 1);
+    return(write(1, "\n", 1));
+}

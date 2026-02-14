@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 02:47:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/01/31 04:35:13 by juannune         ###   ########.fr       */
+/*   Updated: 2026/02/06 03:45:43 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 15:59:58 by steven            #+#    #+#             */
-/*   Updated: 2026/01/31 05:37:02 by juannune         ###   ########.fr       */
+/*   Created: 2026/02/07 02:18:46 by juannune          #+#    #+#             */
+/*   Updated: 2026/02/07 04:10:26 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ char	*get_next_line(int fd)
 {
 	static char	*stash[4096];
 	char		*line;
+	char		*temp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= 4096)
 		return (NULL);
@@ -120,8 +121,12 @@ char	*get_next_line(int fd)
 	if (!stash[fd])
 		return (NULL);
 	line = extract_line(stash[fd]);
-	stash[fd] = update_stash(stash[fd]);
-	if (!line)
+	if (line)
+	{
+		temp = stash[fd];
+		stash[fd] = update_stash(temp);
+	}
+	else
 	{
 		free(stash[fd]);
 		stash[fd] = NULL;
