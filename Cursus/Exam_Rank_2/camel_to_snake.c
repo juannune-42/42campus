@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   camel_to_snake.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 03:22:50 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/14 04:19:25 by juannune         ###   ########.fr       */
+/*   Created: 2026/02/14 04:02:00 by juannune          #+#    #+#             */
+/*   Updated: 2026/02/14 04:09:50 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	int	sign = 1, result = 0;
+#include <unistd.h>
 
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-		sign = (*str++ == '-') ? -1 : 1;
-	while (*str >= '0' && *str <= '9')
-		result = result * 10 + (*str++ - '0');
-	return (result * sign);
+int main(int argc, char **argv)
+{
+    if(argc != 2)
+        return(write(1, "\n", 1));
+    while (*argv[1])
+    {
+        if (*argv[1] >= 'A' && *argv[1] <= 'Z')
+            write(1, "_", 1), *argv[1] += 32;
+        write(1, argv[1]++, 1);
+    }    
+    return(write(1, "\n", 1));   
 }
