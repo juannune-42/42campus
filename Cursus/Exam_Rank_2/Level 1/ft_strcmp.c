@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 04:53:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/14 05:04:25 by juannune         ###   ########.fr       */
+/*   Created: 2026/02/14 04:49:09 by juannune          #+#    #+#             */
+/*   Updated: 2026/02/17 03:42:45 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <string.h>
-
-size_t	ft_strcspn(const char *s, const char *reject)
+int ft_strcmp(char  *s1, char *s2)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (s[i])
-	{
-		j = 0;
-		while (reject[j])
-		{
-			if (s[i] == reject[j])
-				return (i);
-			j++;
-		}
-		i++;
-	}
-	return (i);
+    while ((*s1 || *s2) && *s1 == *s2)
+        s1++, s2++;
+    return(*s1 - * s2);
 }

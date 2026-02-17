@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 04:49:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/14 04:51:49 by juannune         ###   ########.fr       */
+/*   Created: 2026/02/12 02:50:59 by juannune          #+#    #+#             */
+/*   Updated: 2026/02/17 02:49:08 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char  *s1, char *s2)
+char	*ft_strcpy(char *s1, char *s2)
 {
-    while ((*s1 || *s2) && *s1 == *s2)
-        s1++, s2++;
-    return(*s1 - * s2);
+	for (int i = 0; (s1[i] = s2[i]) != '\0'; i++);
+	return(s1);
 }
+
+
+// char	*ft_strcpy(char *s1, char *s2)
+// {
+//     char    *dest = s1;
+// 	while (*s2)
+// 		*s1++ = *s2++;
+// 	*s1 = 0;
+// 	return dest;
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 04:13:05 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/14 04:47:17 by juannune         ###   ########.fr       */
+/*   Updated: 2026/02/17 03:32:06 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,11 @@ int main(int argc, char **argv)
     b = ft_atoi(argv[3]);
     switch(*argv[2])
     {
-        case '+':
-            printf("%d", a+b);
-            break;
-        case '-':
-            printf("%d", a-b);
-            break;
-        case '*':
-            printf("%d", a*b);
-            break;
-        case '/':
-            printf("%d", a/b);
-            break;
-        case '%':
-            printf("%d", a%b);
-            break;
+        case '+':   printf("%d", a+b),  break;
+        case '-':   printf("%d", a-b),  break;
+        case '*':   printf("%d", a*b),  break;
+        case '/':   printf("%d", a/b),  break;
+        case '%':   printf("%d", a%b),  break;
     }
     return (printf("\n"));
 }
