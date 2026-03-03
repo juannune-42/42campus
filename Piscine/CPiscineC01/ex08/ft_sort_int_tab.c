@@ -6,17 +6,13 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:52:32 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/23 15:10:12 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:21:06 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 void	ft_sort_int_tab(int *tab, int size)
 {
-	int	nuisance;
+	int	temp;
 	int	i;
 	int	j;
 
@@ -28,9 +24,9 @@ void	ft_sort_int_tab(int *tab, int size)
 		{
 			if (tab[j] > tab[j + 1])
 			{
-				nuisance = tab[j];
+				temp = tab[j];
 				tab[j] = tab[j + 1];
-				tab[j + 1] = nuisance;
+				tab[j + 1] = temp;
 			}
 			j++;
 		}

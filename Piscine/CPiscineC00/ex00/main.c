@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 14:42:59 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/05 15:39:11 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:11:27 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int	main(int argc, char **argv)
 {
 	if (argc > 1)
 		ft_putchar(argv[1][0]);
-    return (0);
+	return (0);
 }

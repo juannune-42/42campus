@@ -6,31 +6,25 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:46:55 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/01 22:23:46 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:41:36 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbra(char nb)
+void	ft_putnbr(int nbr)
 {
-	write(1, &nb, 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	if (nbr == -2147483648)
 		write(1, "-2147483648", 11);
-	else if (nb < 0)
+	else if (nbr < 0)
 	{
-		ft_putnbra('-');
-		ft_putnbr(-nb);
-	}
-	else if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbra(nb % 10 + '0');
+		write(1, "-", 1);
+		ft_putnbr(-nbr);
 	}
 	else
-		ft_putnbra(nb + '0');
+	{
+		if (nbr >= 10)
+			ft_putnbr(nbr / 10);
+		write(1, (char []){nbr % 10 + '0'}, 1);
+	}
 }

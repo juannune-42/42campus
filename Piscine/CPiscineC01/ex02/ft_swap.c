@@ -6,22 +6,20 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:48:32 by juannune          #+#    #+#             */
-/*   Updated: 2025/12/10 20:08:32 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:53:55 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_swap(int *a, int *b)
-{
-	*a ^= *b;
-	*b ^= *a;
-	*a ^= *b;
-}
-
-/*void	ft_swap(int *a, int *b)
 {
 	int	tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
-}*/
+}
+// {
+// 	*a ^= *b;
+// 	*b ^= *a;
+// 	*a ^= *b;
+// }

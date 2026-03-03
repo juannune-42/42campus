@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 14:42:59 by juannune          #+#    #+#             */
-/*   Updated: 2026/02/26 03:41:44 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:12:34 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,4 @@ void	ft_print_numbers(void)
 	while (i++ < '9')
 		write(1, &i, 1);
 }
-
 //	for (char	c = '1'; c <= '9' && write(1, &c, 1); c++);
-
