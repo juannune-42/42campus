@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 14:42:59 by juannune          #+#    #+#             */
-/*   Updated: 2025/11/29 05:09:20 by juannune         ###   ########.fr       */
+/*   Updated: 2026/02/27 11:19:19 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_print_comb(void)
 {
-	char	array[] = "///";
+	char	array[3];
 
+	array[0] = '/';
 	while (array[0]++ < '7')
 	{
 		array[1] = array[0];
@@ -31,3 +32,11 @@ void	ft_print_comb(void)
 		}
 	}
 }
+// {
+// 	char	array[4];
+// 	while (array[0]++ < '7' && (array[1] = array[0]))
+// 		while (array[1]++ < '8' && (array[2] = array[1]))
+// 			while (array[2]++ < '9')
+// 				if (write(1, array, 3) && !(array[0] == '7'))
+// 					write(1, ", ", 2);
+// }
