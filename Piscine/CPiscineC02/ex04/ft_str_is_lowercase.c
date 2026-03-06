@@ -6,17 +6,14 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:27:46 by juannune          #+#    #+#             */
-/*   Updated: 2025/07/01 12:01:46 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:03:36 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_lowercase(char *str)
 {
 	while (*str)
-	{
-		if (*str < 'a' || *str > 'z')
+		if (*str < 'a' || *str++ > 'z')
 			return (0);
-		str++;
-	}
 	return (1);
 }

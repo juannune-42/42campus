@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:32:17 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 14:20:53 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/06 11:22:21 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@ char	*ft_strupcase(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
+	i = -1;
+	while (str[++i])
 		if (str[i] >= 'a' && str[i] <= 'z')
 			str[i] -= 32;
-		i++;
-	}
 	return (str);
 }

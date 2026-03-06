@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 16:15:02 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/25 16:37:09 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/06 13:46:35 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_putstr_non_printable(char *str);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	str[] = "Coucou\ntu vas bien ?";
-
-	printf("%s\n", str);
-	ft_putstr_non_printable(str);
+	if (argc != 2)
+		return (0);
+	printf("%s\n", argv[1]);
+	ft_putstr_non_printable(argv[1]);
 	return (0);
 }

@@ -6,17 +6,14 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:33:11 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/24 10:50:16 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:43:18 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_printable(char *str)
 {
 	while (*str)
-	{
-		if (*str < ' ' || *str == 127)
+		if (*str < ' ' || *str++ == 127)
 			return (0);
-		str++;
-	}
 	return (1);
 }

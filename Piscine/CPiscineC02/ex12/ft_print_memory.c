@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:39:01 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 09:34:11 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/06 13:54:14 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		logic(ptr, i, size);
 		i += 16;
 	}
+	return (0);
 	return (addr);
 }

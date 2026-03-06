@@ -6,22 +6,14 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 08:41:57 by juannune          #+#    #+#             */
-/*   Updated: 2025/07/03 09:11:34 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:40:37 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_alpha(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < 'A' || str[i] > 'z')
+	while (*str)
+		if ((*str < 'A' || *str > 'z') || (*str > 'Z' && *str++ < 'a'))
 			return (0);
-		if (str[i] > 'Z' && str[i] < 'a')
-			return (0);
-		i++;
-	}
 	return (1);
 }

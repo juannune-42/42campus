@@ -6,20 +6,14 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:19 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 14:10:35 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:07:40 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_numeric(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < '0' || str[i] > '9')
+	while (*str)
+		if (*str < '0' || *str++ > '9')
 			return (0);
-		i++;
-	}
 	return (1);
 }

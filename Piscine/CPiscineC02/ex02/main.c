@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 16:15:02 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/24 15:38:11 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/03 14:00:39 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 char	ft_str_is_alpha(char *str);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	str[] = "";
-	printf("%s\n", str);
-	printf("%d", ft_str_is_alpha(str));
+	if (argc != 2)
+		return (0);
+	printf("%s\n", argv[1]);
+	printf("%d", ft_str_is_alpha(argv[1]));
 	return (0);
 }

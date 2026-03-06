@@ -6,17 +6,14 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:31:04 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/24 10:50:34 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:53:29 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_uppercase(char *str)
 {
 	while (*str)
-	{
-		if (*str < 'A' || *str > 'Z')
+		if (*str < 'A' || *str++ > 'Z')
 			return (0);
-		str++;
-	}
 	return (1);
 }
