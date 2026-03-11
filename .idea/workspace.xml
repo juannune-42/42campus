@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="66bc095b-4013-4b99-b7ef-962684b061e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/42campus.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cursus/Java/HolaMundo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cursus/Java/HolaMundo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/ft_print_memory.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/ft_print_memory.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/ft_strcmp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/ft_strcmp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/ft_strncmp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/ft_strncmp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/ft_strcat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/ft_strcat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/ft_strncat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/ft_strncat.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +36,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HolaMundo.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
