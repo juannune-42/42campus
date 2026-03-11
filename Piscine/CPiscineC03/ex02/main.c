@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 10:52:31 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:44:55 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,10 @@
 
 char	*ft_strcat(char *dest, char *src);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	src1[] = " mundo";
-	char	src2[] = "!";
-	char	src3[] = " ¿Cómo estás?";
-
-	char dest[100] = "hola"; // Array con espacio suficiente
-	printf("Antes: %s\n", dest);
-	ft_strcat(dest, src1);
-	printf("Después de src1: %s\n", dest);
-	ft_strcat(dest, src2);
-	printf("Después de src2: %s\n", dest);
-	ft_strcat(dest, src3);
-	printf("Después de src3: %s\n", dest);
+	if (argc != 3)
+		return (0);
+	printf ("%s", ft_strcat(argv[1], argv[2]));
 	return (0);
 }

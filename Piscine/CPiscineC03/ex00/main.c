@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 10:57:14 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:28:53 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,12 @@
 
 int	ft_strcmp(char *s1, char *s2);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	*a;
-	char	*b;
-	char	*c;
-	char	*d;
-	char	*e;
-
-	a = "hola";
-	b = "hola";
-	c = "holA";
-	d = "holá";
-	e = "";
-	printf("Comparando \"%s\" y \"%s\": %d\n", a, b, ft_strcmp(a, b));
-	printf("Comparando \"%s\" y \"%s\": %d\n", a, c, ft_strcmp(a, c));
-	printf("Comparando \"%s\" y \"%s\": %d\n", a, d, ft_strcmp(a, d));
-	printf("Comparando \"%s\" y \"%s\": %d\n", a, e, ft_strcmp(a, e));
-	printf("Comparando \"%s\" y \"%s\": %d\n", a, f, ft_strcmp(a, f));
-	printf("Comparando \"%s\" y \"%s\": %d\n", f, f, ft_strcmp(f, f));
+	if (argc != 3)
+		return (0);
+	printf("Comparing \"%s\" ", argv[1]);
+	printf("and \"%s\"", argv[2]);
+	printf(": %d\n", ft_strcmp(argv[1], argv[2]));
 	return (0);
 }

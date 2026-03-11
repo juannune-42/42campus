@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:39:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/06 13:54:14 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/11 12:38:23 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void	print_address(unsigned long addr)
 	int		i;
 
 	hex_digits = "0123456789abcdef";
-	i = 15;
-	while (i >= 0)
+	i = 16;
+	while (--i >= 0)
 	{
 		address_str[i] = hex_digits[addr & 0xF];
 		addr >>= 4;
-		i--;
 	}
 	write(1, address_str, 16);
 	write(1, ":", 1);
@@ -55,8 +54,8 @@ void	logic(unsigned char *ptr, unsigned int i, unsigned int size)
 	unsigned int	j;
 
 	print_address((unsigned long)(ptr + i));
-	j = 0;
-	while (j < 16)
+	j = -1;
+	while (++j < 16)
 	{
 		if (i + j < size)
 			print_hex(ptr[i + j]);
@@ -64,15 +63,11 @@ void	logic(unsigned char *ptr, unsigned int i, unsigned int size)
 			write(1, "  ", 2);
 		if (j % 2 == 1 && j < 15)
 			write(1, " ", 1);
-		j++;
 	}
 	write(1, " ", 1);
-	j = 0;
-	while (j < 16 && i + j < size)
-	{
+	j = -1;
+	while (++j < 16 && i + j < size)
 		print_char(ptr[i + j]);
-		j++;
-	}
 	write(1, "\n", 1);
 }
 
@@ -91,5 +86,4 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		i += 16;
 	}
 	return (0);
-	return (addr);
 }
