@@ -6,16 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="66bc095b-4013-4b99-b7ef-962684b061e8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/ft_print_memory.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/ft_print_memory.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex12/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC00/ex02/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC00/ex02/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/ft_strcmp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/ft_strcmp.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/ft_strncmp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/ft_strncmp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/ft_strcat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/ft_strcat.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/ft_strncat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/ft_strncat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/ft_strstr.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/ft_strstr.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

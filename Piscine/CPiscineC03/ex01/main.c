@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/11 13:30:10 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/13 12:36:51 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,10 @@ int	ft_atoi(char *str)
 
 int	main(int argc, char **argv)
 {
-	int	n;
-
 	if (argc != 4)
 		return (0);
-	n = ft_atoi(argv[3]);
 	printf("Comparing \"%s\" ", argv[1]);
 	printf("and \"%s\"", argv[2]);
-	printf(": %d\n", ft_strncmp(argv[1], argv[2], n));
+	printf(": %d\n", ft_strncmp(argv[1], argv[2], ft_atoi(argv[3])));
 	return (0);
 }

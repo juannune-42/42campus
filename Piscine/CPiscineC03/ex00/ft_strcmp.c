@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:07:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/11 13:34:06 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:29:40 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = -1;
-	while (s1[++i] && s2[i] && s1[i] == s2[i]);
+	while (s1[++i] && s2[i] && s1[i] == s2[i])
+		;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

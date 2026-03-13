@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:07:55 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/03 13:28:49 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/13 12:47:17 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int	main(int argc, char **argv)
 	int	size;
 	int	tab[100];
 
-	if (argc < 2)
+	if (argc > 2)
 		return (0);
-	i = 0;
+	i = -1;
 	while (++i < argc)
-		tab[i- 1] = ft_atoi(argv[i]);
-	size = i - 1;
+		tab[i] = ft_atoi(argv[i + 1]);
+	size = i;
 	ft_rev_int_tab(tab, size);
 	i = 0;
 	while (i < size)

@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 10:53:23 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/13 12:35:43 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb);
 
-int	main(void)
+int	ft_atoi(char *str)
 {
-	char	src1[] = " mundo";
-	char	src2[] = "!";
-	char	src3[] = " ¿Cómo estás?";
-	int		nb;
+	int	nbr;
+	int	sign;
 
-	char dest[100] = "hola"; // Array con espacio suficiente
-	nb = 5;
-	printf("Antes: %s\n", dest);
-	ft_strncat(dest, src1, nb);
-	printf("Después de src1: %s\n", dest);
-	ft_strncat(dest, src2, nb);
-	printf("Después de src2: %s\n", dest);
-	ft_strncat(dest, src3, nb);
-	printf("Después de src3: %s\n", dest);
+	nbr = 0;
+	sign = 1;
+	if (*str == '-' && ++str)
+		sign = 1;
+	while (*str)
+		nbr = nbr * 10 + *str++ - '0';
+	return (nbr * sign);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 4)
+		return (0);
+	printf("%s", ft_strncat(argv[1], argv[2], ft_atoi(argv[3])));
 	return (0);
 }
