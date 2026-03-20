@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 01:11:31 by juannune          #+#    #+#             */
-/*   Updated: 2025/07/04 03:05:10 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:46:43 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@ int	ft_sqrt(int nb)
 
 	temp = nb;
 	i = 0;
-	while (temp)
-	{
+	while (temp-- && ++i)
 		if (nb == i * i)
 			return (i);
-		i++;
-		temp--;
-	}
 	return (0);
 }

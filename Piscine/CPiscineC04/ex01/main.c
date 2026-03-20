@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 14:55:03 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/20 11:09:47 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_putstr(char *str);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	*dest;
-
-	dest = "holaholahola";
-	ft_putstr(dest);
+	if (argc != 2)
+		return (0);
+	ft_putstr(argv[1]);
 }

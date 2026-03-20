@@ -6,69 +6,53 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 22:14:02 by juannune          #+#    #+#             */
-/*   Updated: 2025/07/03 21:44:44 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:51:40 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	basevf(char c, char *base, int l)
+int	basevf(char c, char *base, int len)
 {
 	int	i;
 
-	i = 0;
-	while (base[i])
-	{
-		if (c == base[i] && i != l)
+	i = -1;
+	while (base[++i])
+		if (c == base[i] && i != len)
 			return (0);
-		i++;
-	}
 	return (1);
 }
 
 void	baselogic(long i, char *base)
 {
-	char	c;
-
-	c = base[i];
-	write(1, &c, 1);
+	write(1, &base[i], 1);
 }
 
-void	logic(long nbr, char *base, int l)
+void	logic(long nbr, char *base, int len)
 {
-	long	i;
-
-	if (nbr >= l)
-	{
-		i = nbr / l;
-		logic(i, base, l);
-	}
-	i = nbr % l;
-	baselogic(i, base);
+	if (nbr >= len)
+		logic(nbr / len, base, len);
+	baselogic(nbr % len, base);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int		l;
+	int		len;
 	long	nb;
 
-	l = 0;
+	len = -1;
 	nb = nbr;
-	while (base[l])
-	{
-		if (!basevf(base[l], base, l))
+	while (base[++len])
+		if (!basevf(base[len], base, len) || base[len] == '+'
+			|| base[len] == '-' || base[len] == ' ' || (base[len] >= 9
+				&& base[len] <= 13))
 			return ;
-		if (base[l] == '+' || base[l] == '-' || base[l] == ' ' || (base[l] >= 9
-				&& base[l] <= 13))
-			return ;
-		l++;
-	}
-	if (l == 0 || l == 1)
+	if (len == 0 || len == 1)
 		return ;
 	if (nb < 0)
 	{
 		write(1, "-", 1);
 		nb = -nb;
 	}
-	logic(nb, base, l);
+	logic(nb, base, len);
 }

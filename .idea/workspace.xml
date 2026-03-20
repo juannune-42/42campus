@@ -6,22 +6,36 @@
   <component name="ChangeListManager">
     <list default="true" id="66bc095b-4013-4b99-b7ef-962684b061e8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC00/ex02/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC00/ex02/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex04/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex07/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/ft_strcmp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/ft_strcmp.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex00/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex01/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/ft_strcat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/ft_strcat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex02/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/ft_strncat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/ft_strncat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex03/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/ft_strstr.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/ft_strstr.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex04/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC01/ex08/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC01/ex08/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC02/ex10/ft_strlcpy.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC02/ex10/ft_strlcpy.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex05/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex05/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex05/ft_strlcat.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex05/ft_strlcat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC03/ex05/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC03/ex05/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex00/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex00/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex00/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex00/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex01/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex01/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex01/ft_putstr.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex01/ft_putstr.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex01/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex01/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex02/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex02/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex02/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex02/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex03/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex03/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex03/ft_atoi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex03/ft_atoi.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex04/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex04/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex04/ft_putnbr_base.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex04/ft_putnbr_base.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex04/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex04/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex05/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex05/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex05/ft_atoi_base.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex05/ft_atoi_base.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC04/ex05/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC04/ex05/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC05/ex00/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC05/ex00/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC05/ex05/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC05/ex05/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC05/ex05/ft_sqrt.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC05/ex05/ft_sqrt.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC05/ex06/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC05/ex06/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC05/ex06/ft_is_prime.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC05/ex06/ft_is_prime.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC05/ex08/ft_ten_queens_puzzle.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC05/ex08/ft_ten_queens_puzzle.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC06/ex01/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC06/ex01/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC06/ex01/ft_print_params.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC06/ex01/ft_print_params.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC06/ex02/ft_rev_params.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC06/ex02/ft_rev_params.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Piscine/CPiscineC06/ex03/ft_sort_params.c" beforeDir="false" afterPath="$PROJECT_DIR$/Piscine/CPiscineC06/ex03/ft_sort_params.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

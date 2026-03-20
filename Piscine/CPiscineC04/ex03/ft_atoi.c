@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 15:06:46 by juannune          #+#    #+#             */
-/*   Updated: 2025/07/03 09:38:10 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/20 11:20:04 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,9 @@ int	ft_atoi(char *str)
 		|| str[i] == '\f' || str[i] == '\r')
 		i++;
 	while (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			sign = -sign;
-		i++;
-	}
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + (str[i] - '0');
-		i++;
-	}
+		num = num * 10 + (str[i++] - '0');
 	return (sign * num);
 }

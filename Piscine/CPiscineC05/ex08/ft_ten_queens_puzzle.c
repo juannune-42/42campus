@@ -6,11 +6,11 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 02:21:43 by juannune          #+#    #+#             */
-/*   Updated: 2025/07/04 02:22:16 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:50:57 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_ten_queens_puzzle(void)
 {
-    
+    //make
 }

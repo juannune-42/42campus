@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2025/06/30 15:04:27 by juannune         ###   ########.fr       */
+/*   Updated: 2026/03/20 12:51:53 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,24 @@
 
 void	ft_putnbr(int nb);
 
-int	main(void)
+int	ft_atoi(char *str)
 {
-	ft_putnbr(42);
-	write(1, "\n", 1);
-	ft_putnbr(-2147483648);
-	write(1, "\n", 1);
-	ft_putnbr(0);
-	write(1, "\n", 1);
-	ft_putnbr(123456789);
-	write(1, "\n", 1);
-	ft_putnbr(-987654321);
-	write(1, "\n", 1);
-	ft_putnbr(2147483647);
-	write(1, "\n", 1);
+	int	nbr;
+	int	sign;
+
+	nbr = 0;
+	sign = 1;
+	if (*str == '-' && ++*str)
+		sign = -1;
+	while (*str)
+		nbr = 10 * nbr + *str++ - '0';
+	return (nbr * sign);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+		return (0);
+	ft_putnbr(ft_atoi(argv[1]));
 	return (0);
 }
