@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 02:03:24 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/27 11:44:07 by juannune         ###   ########.fr       */
+/*   Created: 2026/03/27 14:00:36 by juannune          #+#    #+#             */
+/*   Updated: 2026/03/27 14:00:55 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_find_next_prime(int nb)
-{
-	int	i;
+int ft_ten_queens_puzzle(void);
 
-	if (nb < 2)
-		return (2);
-	while (nb)
-	{
-		i = 2;
-		while (i < nb)
-			if (nb % i++ == 0)
-				break ;
-		if (i == nb)
-			return (i);
-		nb++;
-	}
-	return (0);
+int main()
+{
+    ft_ten_queens_puzzle();
+    return (0);
 }
