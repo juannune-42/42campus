@@ -5,37 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 02:56:09 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/31 12:42:06 by juannune         ###   ########.fr       */
+/*   Created: 2026/03/31 12:07:58 by juannune          #+#    #+#             */
+/*   Updated: 2026/03/31 13:26:38 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
-
-int	ft_atoi(char *str)
-{
-	int	nbr;
-	int	sign;
-
-	nbr = 0;
-	sign = 1;
-	if (*str == '-' && ++str)
-		sign = -1;
-	while (*str)
-		nbr = nbr * 10 + *str++ - '0';
-	return (nbr * sign);
-}
+char	*ft_strdup(char *src);
 
 int	main(int argc, char **argv)
 {
-	if (argc != 4)
+	if (argc != 2)
 		return (0);
-	printf("Dest: %s\n", argv[1]);
-	printf("Src: %s\n", argv[2]);
-	printf("size: %s\n", argv[3]);
-	printf("Result: %d\n", ft_strlcat(argv[1], argv[2], ft_atoi(argv[3])));
-	printf("Dest: %s\n", argv[1]);
-	return (0);
+	printf("src: %s\n", argv[1]);
+	printf("dup: %s\n", ft_strdup(argv[1]));
 }
