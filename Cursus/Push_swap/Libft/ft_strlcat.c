@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 12:27:34 by juannune          #+#    #+#             */
-/*   Updated: 2026/04/02 13:41:32 by juannune         ###   ########.fr       */
+/*   Created: 2025/11/10 23:26:38 by juannune          #+#    #+#             */
+/*   Updated: 2025/11/10 23:40:17 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_ultimate_range(int **range, int min, int max)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	size;
+	size_t	srclen;
+	size_t	dstlen;
 
-	if (min >= max)
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	if (dstlen >= dstsize)
+		return (dstsize + srclen);
+	if (srclen < dstsize - dstlen)
+		ft_memcpy(dst + dstlen, src, srclen + 1);
+	else
 	{
-		*range = NULL;
-		return (0);
+		ft_memcpy(dst + dstlen, src, dstsize - dstlen - 1);
+		dst[dstsize - 1] = '\0';
 	}
-	size = max - min;
-	*range = malloc(size * sizeof(int));
-	if(!*range)
-		return (NULL);
-	while (size--)
-		(*range)[size] = min + size;
-	return (max - min);
+	return (dstlen + srclen);
 }

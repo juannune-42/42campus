@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 12:07:58 by juannune          #+#    #+#             */
-/*   Updated: 2026/04/02 12:58:54 by juannune         ###   ########.fr       */
+/*   Created: 2025/10/07 17:38:34 by juannune          #+#    #+#             */
+/*   Updated: 2025/11/10 23:23:46 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strjoin(int size, char **strs, char *sep);
-
-int	ft_atoi(char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	nbr;
-	int	sign;
+	size_t	srclen;
 
-	nbr = 0;
-	sign = 1;
-	if (*str == '-' && ++str)
-		sign = -1;
-	while (*str)
-		nbr = nbr * 10 + *str++ - '0';
-	return (nbr * sign);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 4)
-		return (0);
-	printf("%s", ft_strjoin(ft_atoi(argv[1]), &argv[2], argv[3]));
-	return (0);
+	srclen = ft_strlen(src);
+	if (srclen + 1 < dstsize)
+		ft_memcpy(dst, src, srclen + 1);
+	else if (dstsize != 0)
+	{
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = 0;
+	}
+	return (srclen);
 }

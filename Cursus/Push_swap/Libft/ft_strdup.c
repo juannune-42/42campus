@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 12:27:34 by juannune          #+#    #+#             */
-/*   Updated: 2026/04/02 13:41:53 by juannune         ###   ########.fr       */
+/*   Created: 2025/11/11 17:25:37 by juannune          #+#    #+#             */
+/*   Updated: 2026/01/28 03:04:56 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	*ft_range(int min, int max)
+char	*ft_strdup(const char *s1)
 {
-	int	range;
-	int	*arr;
+	char	*dup;
+	size_t	i;
 
-	if (min >= max)
+	dup = (char *)malloc(ft_strlen(s1) + 1);
+	if (!dup)
 		return (NULL);
-	range = max - min;
-	arr = malloc(range * sizeof(int));
-	if (!arr)
-		return (NULL);
-	while (range--)
-		arr[range] = min + range;
-	return (arr);
+	i = -1;
+	while (s1[++i])
+		dup[i] = s1[i];
+	dup[i] = '\0';
+	return (dup);
 }

@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 12:07:58 by juannune          #+#    #+#             */
-/*   Updated: 2026/04/02 12:58:54 by juannune         ###   ########.fr       */
+/*   Created: 2025/11/21 02:57:41 by juannune          #+#    #+#             */
+/*   Updated: 2025/11/25 04:05:55 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strjoin(int size, char **strs, char *sep);
-
-int	ft_atoi(char *str)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int	nbr;
-	int	sign;
-
-	nbr = 0;
-	sign = 1;
-	if (*str == '-' && ++str)
-		sign = -1;
-	while (*str)
-		nbr = nbr * 10 + *str++ - '0';
-	return (nbr * sign);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 4)
-		return (0);
-	printf("%s", ft_strjoin(ft_atoi(argv[1]), &argv[2], argv[3]));
-	return (0);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

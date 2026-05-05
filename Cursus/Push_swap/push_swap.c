@@ -1,16 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 13:24:01 by juannune          #+#    #+#             */
+/*   Updated: 2026/05/05 03:30:13 by juannune         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 
-int main()
+void ft_sorter(t_list *stack_a,t_list *stack_b, int size)
 {
-    printf("hello, world\n");
-    return (0);
+    if (!is_stack_sorted(stack_a))
+	{
+		if (size == 2)
+			sort_two(&stack_a);
+		else if (size == 3)
+			sort_three(&stack_a);
+		else if (size == 4 || size == 5)
+			sort_five(&stack_a, &stack_b, size);
+		else
+			sort_radix(&stack_a, &stack_b, size);
+	}
 }
 
-using System;
+int	main(int argc, char **argv)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		size;
 
-public class HelloWorld{
-    public static void main(){
-        console.Writeline("Hello world!");
-    }
+	if (argc < 2)
+		return (0);
+	stack_b = NULL;
+	stack_a = ft_parser(argc, argv);
+	size = ft_sizer(stack_a);
+	ft_indexer(stack_a);
+	ft_sorter(&stack_a, &stack_b, size);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+	return (0);
 }

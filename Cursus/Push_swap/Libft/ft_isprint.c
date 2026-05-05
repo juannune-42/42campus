@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 12:27:34 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/31 13:22:44 by juannune         ###   ########.fr       */
+/*   Created: 2025/10/07 11:32:20 by juannune          #+#    #+#             */
+/*   Updated: 2025/10/07 11:32:35 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_ultimate_range(int **range, int min, int max)
+int	ft_isprint(int c)
 {
-	int	size;
-
-	if (min >= max)
-	{
-		*range = NULL;
-		return (0);
-	}
-	size = max - min;
-	*range = malloc(size * sizeof(int));
-	while (size--)
-		(*range)[size] = min + size;
-	return (max - min);
+	return (c >= 32 && c <= 126);
 }
