@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 03:10:56 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 14:09:09 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/17 14:36:32 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <unistd.h>
 # include <limits.h>
 
-typedef struct s_list
+typedef struct s_node
 {
 	int				value;
 	int				index;
-	struct s_list	*next;
-}					t_list;
+	struct s_node	*next;
+}					t_node;
 
 /* parser */
 t_list				*ft_parser(int argc, char **argv);
