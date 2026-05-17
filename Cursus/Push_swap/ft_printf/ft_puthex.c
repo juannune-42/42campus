@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 04:53:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/08 14:14:47 by juannune         ###   ########.fr       */
+/*   Created: 2025/12/13 00:38:36 by juannune          #+#    #+#             */
+/*   Updated: 2025/12/13 02:01:45 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "ft_printf.h"
 
-size_t	ft_strcspn(const char *s, const char *reject)
+int	ft_puthex(unsigned long long nbr, char *strhex)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (s[i])
-	{
-		j = 0;
-		while (reject[j])
-		{
-			if (s[i] == reject[j])
-				return (i);
-			j++;
-		}
-		i++;
-	}
-	return (i);
+	if (nbr > 15)
+		return (ft_puthex(nbr / 16, strhex) + ft_puthex(nbr % 16, strhex));
+	return (write(1, &strhex[nbr], 1));
 }

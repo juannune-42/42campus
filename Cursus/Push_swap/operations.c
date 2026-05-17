@@ -5,48 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 14:53:13 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/06 16:00:36 by juannune         ###   ########.fr       */
+/*   Created: 2026/05/08 12:41:59 by juannune          #+#    #+#             */
+/*   Updated: 2026/05/17 14:10:32 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **stack, char type)
+void	swap_swap(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp;
 
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	temp = (*stack)->next;
-	(*stack)->next = temp->next;
-	temp->next = *stack;
-	*stack = temp;
-	ft_print("s%c\n", type);
-}
-void	push(t_list **reciver, t_list **giver, char type)
-{
-	t_list	*temp;
-
-	if (!giver || !*giver)
-		return ;
-	temp = *reciver;
-	*reciver = *giver;
-	(*reciver)->next = *temp;
-	*giver = (*giver)->next;
-	ft_print("p%c\n", type);
+	if (stack_a && *stack_a && (*stack_a)->next)
+		swap_a(stack_a);
+	if (stack_b && *stack_b && (*stack_b)->next)
+		swap_b(stack_b);
+	ft_printf("ss\n");
 }
 
-void	rotate(t_list **stack, char type)
+void	rotate_rotate(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*temp;
+	t_list	*first;
+	t_list	*second;
 
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	temp = *stack;
-	temp->next = NULL;
-	while ((*stack)->next != NULL)
-		*stack = (*stack)->next;
-	(*stack)->next = temp;
-	ft_print("r%c\n", type);
+	if (stack_a && *stack_a && (*stack_a)->next)
+		rotate_a(stack_a);
+	if (stack_b && *stack_b && (*stack_b)->next)
+		rotate_b(stack_b);
+	ft_printf("rr\n");
+}
+
+static void	reverse_rotate_both(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*first;
+	t_list	*second;
+
+	if (stack_a && *stack_a && (*stack_a)->next)
+		reverese_rotate_a(stack_a);
+	if (stack_b && *stack_b && (*stack_b)->next)
+		reverse_rotate_b(stack_b);
+	ft_printf("rrr\n");
 }

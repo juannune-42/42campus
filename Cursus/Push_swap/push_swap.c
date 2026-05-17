@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 13:24:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/05 03:30:13 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/17 13:06:02 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_sorter(t_list *stack_a,t_list *stack_b, int size)
+void	ft_sorter(t_list *stack_a, t_list *stack_b, int size)
 {
-    if (!is_stack_sorted(stack_a))
+	if (!is_stack_sorted(stack_a))
 	{
 		if (size == 2)
-			sort_two(&stack_a);
+			sort_two(stack_a);
 		else if (size == 3)
-			sort_three(&stack_a);
+			sort_three(stack_a);
 		else if (size == 4 || size == 5)
-			sort_five(&stack_a, &stack_b, size);
+			sort_five(stack_a, stack_b, size);
 		else
-			sort_radix(&stack_a, &stack_b, size);
+			sort_radix(stack_a, stack_b, size);
 	}
 }
 
@@ -37,6 +37,8 @@ int	main(int argc, char **argv)
 		return (0);
 	stack_b = NULL;
 	stack_a = ft_parser(argc, argv);
+	if (!stack_a)
+		return (1);
 	size = ft_sizer(stack_a);
 	ft_indexer(stack_a);
 	ft_sorter(&stack_a, &stack_b, size);

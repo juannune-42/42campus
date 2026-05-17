@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   sorter_radix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 04:53:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/08 14:14:47 by juannune         ###   ########.fr       */
+/*   Created: 2026/05/08 13:46:31 by juannune          #+#    #+#             */
+/*   Updated: 2026/05/17 13:39:04 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "push_swap.h"
 
-size_t	ft_strcspn(const char *s, const char *reject)
+void	sort_radix(t_list **a, t_list **b, int size)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
+	int	max_bits;
 
 	i = 0;
-	while (s[i])
+	max_bits = 0;
+	while ((size - 1) >> max_bits)
+		max_bits++;
+	while (i < max_bits)
 	{
 		j = 0;
-		while (reject[j])
+		while (j < size)
 		{
-			if (s[i] == reject[j])
-				return (i);
+			if ((((*a)->index >> i) & 1) == 0)
+				push_b(a, b);
+			else
+				rotate_a(a);
 			j++;
 		}
+		while (*b)
+			push_a(a, b);
 		i++;
 	}
-	return (i);
 }

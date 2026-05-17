@@ -5,48 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/06 02:28:32 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/06 09:36:19 by juannune         ###   ########.fr       */
+/*   Created: 2026/05/08 14:05:42 by juannune          #+#    #+#             */
+/*   Updated: 2026/05/17 12:52:45 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_process_args(char **args, t_stack **stack_a)
+static int	parse_one_arg(char *str, t_list **stack_a)
 {
-	long	n;
-	int		i;
+	char	**args;
+	int		j;
 
-	i = 0;
-	while (args[i])
+	args = ft_split(str, ' ');
+	if (!args || !*args)
 	{
-		n = ft_atol(args[i], stack_a, args);
-		if (ft_check_duplicates(*stack_a, (int)n))
-		{
-			ft_free_matrix(args);
-			ft_error_exit(stack_a, NULL);
-		}
-		ft_stack_add_back(stack_a, ft_stack_new((int)n));
-		i++;
+		free_split(args);
+		ft_putendl_fd("Error", 2);
+		return (0);
 	}
+	j = 0;
+	while (args[j])
+	{
+		if (!append_number(stack_a, args[j]))
+		{
+			free_split(args);
+			ft_putendl_fd("Error", 2);
+			return (0);
+		}
+		j++;
+	}
+	free_split(args);
+	return (1);
 }
 
-t_list  *ft_parser(int argc, char **argv)
+t_list	*ft_parser(int argc, char **argv)
 {
-    t_list  *stack_a;
-    char    **args;
-    int     i;
+	t_list	*stack_a;
+	int		i;
 
-    stack_a = NULL;
-    i = 0;
-    while (++i < argc)
-    {
-        args = ft_split(argv[i], ' ');
-        if (!args || !*args)
-            if (args)
-                free_split(args);
-        ft_process_args(args, stack_a);
-        free_split(array);
-    }
-    return (stack_a);
+	stack_a = NULL;
+	i = 1;
+	while (i < argc)
+	{
+		if (!parse_one_arg(argv[i], &stack_a))
+		{
+			free_stack(&stack_a);
+			return (NULL);
+		}
+		i++;
+	}
+	return (stack_a);
 }

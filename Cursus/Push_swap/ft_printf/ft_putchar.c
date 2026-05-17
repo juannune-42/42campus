@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcspn.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 04:53:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/08 14:14:47 by juannune         ###   ########.fr       */
+/*   Created: 2025/12/12 23:55:09 by juannune          #+#    #+#             */
+/*   Updated: 2025/12/16 16:37:38 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "ft_printf.h"
 
-size_t	ft_strcspn(const char *s, const char *reject)
+int	ft_putchar(char arg)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (s[i])
-	{
-		j = 0;
-		while (reject[j])
-		{
-			if (s[i] == reject[j])
-				return (i);
-			j++;
-		}
-		i++;
-	}
-	return (i);
+	return (write(1, &arg, 1));
 }
