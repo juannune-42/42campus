@@ -6,7 +6,7 @@
 #    By: juannune <juannune@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/08 13:46:17 by juannune          #+#    #+#              #
-#    Updated: 2026/05/17 14:32:21 by juannune         ###   ########.fr        #
+#    Updated: 2026/05/19 02:37:06 by juannune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,18 +37,19 @@ FTPRINTF_DIR  = ft_printf
 LIBFT = $(LIBFT_DIR)/libft.a
 FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
 
-HEADER = push_swap.h
+INCLUDES = -I. -I$(LIBFT_DIR) -I$(FTPRINTF_DIR)
 
-all: $(NAME)
+all:$(NAME)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) bonus
 
-$(FTPRINT):
+$(FTPRINTF):
 	@make -C $(FTPRINTF_DIR)
 
-$(NAME): $(LIBFT) $(FTPRINT) $(OBJS)
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(FTPRINTF_DIR) $(OBJS)
+# Compilar push_swap
+$(NAME): $(LIBFT) $(FTPRINTF) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FTPRINTF) -o $(NAME)
 
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

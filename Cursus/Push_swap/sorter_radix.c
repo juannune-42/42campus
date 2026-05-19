@@ -6,13 +6,13 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 13:46:31 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 13:39:04 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:03:24 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_radix(t_list **a, t_list **b, int size)
+void	sort_radix(t_node **a, t_node **b, int size)
 {
 	int	i;
 	int	j;

@@ -6,13 +6,13 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:05:42 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 12:52:45 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:02:50 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	parse_one_arg(char *str, t_list **stack_a)
+static int	parse_one_arg(char *str, t_node **stack_a)
 {
 	char	**args;
 	int		j;
@@ -39,9 +39,9 @@ static int	parse_one_arg(char *str, t_list **stack_a)
 	return (1);
 }
 
-t_list	*ft_parser(int argc, char **argv)
+t_node	*ft_parser(int argc, char **argv)
 {
-	t_list	*stack_a;
+	t_node	*stack_a;
 	int		i;
 
 	stack_a = NULL;

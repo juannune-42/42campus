@@ -6,19 +6,19 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:57:21 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 13:35:08 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:03:35 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_list **a)
+void	sort_two(t_node **a)
 {
 	if ((*a)->value > (*a)->next->value)
 		swap_a(a);
 }
 
-void	sort_three(t_list **a)
+void	sort_three(t_node **a)
 {
 	int	x;
 	int	y;
@@ -45,7 +45,7 @@ void	sort_three(t_list **a)
 		reverse_rotate_a(a);
 }
 
-void	sort_five(t_list **a, t_list **b, int size)
+void	sort_five(t_node **a, t_node **b, int size)
 {
 	int	pushed;
 	int	min;

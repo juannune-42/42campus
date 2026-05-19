@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 13:45:45 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 13:08:42 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:21:26 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ long	ft_atol(const char *str)
 	return (sign * res);
 }
 
-void	free_stack(t_list **stack)
+void	free_stack(t_node **stack)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if (!stack)
 		return ;
@@ -48,13 +48,13 @@ void	free_stack(t_list **stack)
 	}
 }
 
-int	is_stack_sorted(t_list *stack)
+int	is_stack_sorted(t_node **stack)
 {
-	while (stack && stack->next)
+	while (*stack && (*stack)->next)
 	{
-		if (stack->value > stack->next->value)
+		if ((*stack)->value > (*stack)->next->value)
 			return (0);
-		stack = stack->next;
+		*stack = (*stack)->next;
 	}
 	return (1);
 }

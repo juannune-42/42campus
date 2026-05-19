@@ -6,13 +6,13 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:52:21 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 13:12:35 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:03:11 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sizer(t_list *stack)
+int	ft_sizer(t_node *stack)
 {
 	int	size;
 

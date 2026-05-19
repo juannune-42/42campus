@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 12:46:30 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 14:07:40 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:02:41 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	is_number(const char *s)
 	}
 	return (1);
 }
-int	has_duplicate(t_list *stack, int value)
+int	has_duplicate(t_node *stack, int value)
 {
 	while (stack)
 	{
@@ -56,18 +56,18 @@ int	has_duplicate(t_list *stack, int value)
 	}
 	return (0);
 }
-int	append_number(t_list **stack, const char *str)
+int	append_number(t_node **stack, const char *str)
 {
 	long	n;
-	t_list	*node;
-	t_list	*tmp;
+	t_node	*node;
+	t_node	*tmp;
 
 	if (!is_number(str))
 		return (0);
 	n = ft_atol(str);
 	if (n < INT_MIN || n > INT_MAX || has_duplicate(*stack, (int)n))
 		return (0);
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_node));
 	if (!node)
 		return (0);
 	node->value = (int)n;

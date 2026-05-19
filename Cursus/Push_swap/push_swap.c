@@ -6,13 +6,13 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 13:24:01 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 13:06:02 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:15:46 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sorter(t_list *stack_a, t_list *stack_b, int size)
+void	ft_sorter(t_node **stack_a, t_node **stack_b, int size)
 {
 	if (!is_stack_sorted(stack_a))
 	{
@@ -29,8 +29,8 @@ void	ft_sorter(t_list *stack_a, t_list *stack_b, int size)
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
 	int		size;
 
 	if (argc < 2)

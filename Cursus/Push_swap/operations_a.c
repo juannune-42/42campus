@@ -6,15 +6,15 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:53:13 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/17 13:19:49 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/19 02:02:07 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(t_list **stack)
+void	swap_a(t_node **stack)
 {
-	t_list	*temp;
+	t_node	*temp;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
@@ -25,9 +25,9 @@ void	swap_a(t_list **stack)
 	ft_printf("sa\n");
 }
 
-void	push_a(t_list **stack_a, t_list **stack_b)
+void	push_a(t_node **stack_a, t_node **stack_b)
 {
-	t_list	*temp;
+	t_node	*temp;
 
 	if (!stack_b || !*stack_b)
 		return ;
@@ -38,10 +38,10 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 	ft_printf("pa\n");
 }
 
-void	rotate_a(t_list **stack)
+void	rotate_a(t_node **stack)
 {
-	t_list	*first;
-	t_list	*second;
+	t_node	*first;
+	t_node	*second;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
@@ -55,10 +55,10 @@ void	rotate_a(t_list **stack)
 	ft_printf("ra\n");
 }
 
-void	reverse_rotate_a(t_list **stack)
+void	reverse_rotate_a(t_node **stack)
 {
-	t_list	*first;
-	t_list	*second;
+	t_node	*first;
+	t_node	*second;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
