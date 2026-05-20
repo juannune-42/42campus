@@ -6,10 +6,11 @@
 1. Project Description
 2. Instructions
 3. Approach
+4. Resources
 
 ---
 
-## Project Description
+## Description
 
 Push_swap is a core 42 Network project that consists of developing a program that sorts a series of unique integers using two stacks and a limited set of operations.
 
@@ -37,144 +38,56 @@ These are all the operations we can use:
 
 ## Instructions
 
-Steps to install, compile and run the program.
+Steps to install, compile, and run the program.
 
 ### Installation
 - Clone the repository -> git clone <URL_DEL_REPOSITORIO>
 - cd push_swap
-- Compile the program -> make.
+### Compilation
+- make				# Compiles the `push_swap` executable.
+- make clean		# Removes object files (.o).
+- make fclean		# Removes the object files and the executable.
+- make re			# Recompiles the project from scratch.
+### Execution
 - Run the program by passing a list of arguments:
 
 	Example:
 
 	1.		./push_swap 3 2 5 1 4
 
-	2.		ARG=$(shuf -i 1-10000 -n 500 | tr '\n' ' ')
-	
-			./push_swap $ARG
-
+    2.		shuf -i 0-9999 -n 100 > args.txt;./push_swap $(cat args.txt) > bench.txt | ./checker_linux $(cat args.txt); wc -l < bench.txt
 ---
 
 ## Approach
 
-I used different functions for the cases with 2, 3 and 4 or 5 arguments. For more than 5 arguments, I used the radix sort algorithm with indexing. This approach uses the allowed operations.
+This project uses different strategies depending on the size of the input:
 
-void	sort_two(t_list **a)
-{
-	int	first;
-	int	second;
+- **2 numbers**: a simple comparison is enough. If the two values are out of order, `sa` is used.
+- **3 numbers**: the program handles all possible cases explicitly and applies the smallest valid combination of operations to sort the stack.
+- **4 or 5 numbers**: the smallest values are pushed to stack **B**, the remaining values in stack **A** are sorted, and then the saved values are pushed back into **A** in the correct order.
+- **More than 5 numbers**: the program uses an indexed **Radix Sort** approach. Each value is first assigned an index based on its position in the sorted order, then the algorithm sorts the stack bit by bit using only the allowed operations.
 
-	first = *(int *)(*a)-> content;
-	second = *(int *)(*a)-> next -> content;
-	if (first > second)
-		sa(a);
-}
+For larger inputs, Radix Sort is well suited to `push_swap` because it works efficiently with indexed values and can be adapted to two stacks using bitwise logic:
 
-void	sort_three(t_list **a)
-{
-	int	first;
-	int	second;
-	int	third;
+1. Each number is replaced by its sorted index.
+2. Starting from the least significant bit, each index is checked bit by bit.
+3. If the current bit is `0`, the value is pushed to stack **B** with `pb`.
+4. If the current bit is `1`, stack **A** is rotated with `ra`.
+5. After one full pass, all values in **B** are pushed back to **A** with `pa`.
+6. The process is repeated until all relevant bits have been processed.
 
-	first = *(int *)(*a)-> content;
-	second = *(int *)(*a)-> next -> content;
-	third = *(int *)(*a)-> next -> next -> content;
-	if (first > second && first < third)
-		sa(a);
-	else if (first > second && first > third && second < third)
-		ra(a);
-	else if (first > third && first < second)
-		rra(a);
-	else if (first < second && first < third && second > third)
-	{
-		sa(a);
-		ra(a);
-	}
-	else if (first > second && first > third && second > third)
-	{
-		sa(a);
-		rra(a);
-	}
-}
+This approach keeps the implementation simple, deterministic, and efficient for medium and large input sizes.
 
-void	push_smallest_to_b(t_list **a, t_list **b)
-{
-	t_list	*tmp;
-	int		min;
-	int		pos;
+## Resources
 
-	tmp = *a;
-	min = *(int *)tmp->content;
-	pos = 0;
-	while (tmp)
-	{
-		if (*(int *)tmp->content < min)
-		{
-			min = *(int *)tmp->content;
-			pos = 0;
-		}
-		tmp = tmp->next;
-		pos++;
-	}
-	while (*(int *)(*a)->content != min)
-	{
-		if (pos <= ft_lstsize(*a) / 2)
-			ra(a);
-		else
-			rra(a);
-	}
-	pb(a, b);
-}
+### Documentation
+    - [Radix Sort wikipedia page.](https://en.wikipedia.org/wiki/Radix_sort)
+    - [Push_swap Guide.](https://web.archive.org/web/20250305201542/https://42-cursus.gitbook.io/guide/rank-02/push_swap)
 
-void	sort_five(t_list **a)
-{
-	t_list	*b;
-	int		size;
+### IA Usage
+AI assistance was used to support the development of this project in a few specific areas:
 
-	b = NULL;
-	size = ft_lstsize(*a);
-	if (size == 4)
-	{
-		push_smallest_to_b(a, &b);
-		sort_three(a);
-		pa(a, &b);
-	}
-	else if (size == 5)
-	{
-		push_smallest_to_b(a, &b);
-		push_smallest_to_b(a, &b);
-		sort_three(a);
-		if (*(int *)(b->content) < *(int *)(b->next->content))
-			sb(&b);
-		pa(a, &b);
-		pa(a, &b);
-	}
-}
-
-void	radix_sort(t_list **a, int *nums, size_t size)
-{
-	t_list	*b;
-	size_t	i;
-	size_t	j;
-
-	if (!a || !*a || size < 2)
-		return ;
-	b = NULL;
-	sort_array(nums, size);
-	i = 0;
-	while (i < (size_t)max_bits(size))
-	{
-		j = 0;
-		while (j < size)
-		{
-			if ((get_index(nums, size, *(int *)(*a)->content) >> i) & 1)
-				ra(a);
-			else
-				pb(a, &b);
-			j++;
-		}
-		while (b)
-			pa(a, &b);
-		i++;
-	}
-}
+- **Refactoring**: reviewing and improving the parsing logic and `ft_atol` implementation.
+- **Debugging**: helping identify memory management issues in error handling paths, especially around `ft_split`, stack cleanup, and invalid input cases.
+- **Algorithm understanding**: clarifying how Radix Sort works when applied to two stacks using indexed values and bitwise operations.
+- **Documentation**: improving the structure, clarity, and wording of the README.

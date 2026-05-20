@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 12:27:10 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/19 02:02:16 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/20 10:38:00 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	swap_b(t_node **stack)
 	(*stack)->next = temp->next;
 	temp->next = *stack;
 	*stack = temp;
-	ft_printf("sa\n");
+	ft_printf("sb\n");
 }
 
 void	push_b(t_node **stack_a, t_node **stack_b)
@@ -52,7 +52,7 @@ void	rotate_b(t_node **stack)
 		second = second->next;
 	second->next = first;
 	first->next = NULL;
-	ft_printf("ra\n");
+	ft_printf("rb\n");
 }
 
 void	reverse_rotate_b(t_node **stack)
@@ -71,5 +71,5 @@ void	reverse_rotate_b(t_node **stack)
 	first->next = *stack;
 	second->next = NULL;
 	*stack = first;
-	ft_printf("rra\n");
+	ft_printf("rrb\n");
 }
