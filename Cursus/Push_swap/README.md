@@ -56,6 +56,8 @@ Steps to install, compile, and run the program.
 	1.		./push_swap 3 2 5 1 4
 
     2.		shuf -i 0-9999 -n 100 > args.txt;./push_swap $(cat args.txt) > bench.txt | ./checker_linux $(cat args.txt); wc -l < bench.txt
+
+    3.      shuf -i 0-9999 -n 50 > args.txt ; valgrind --leak-check=full --show-leak-kinds=all ./push_swap $(cat args.txt) > bench.txt | ./checker_linux $(cat args.txt) ; wc -l < bench.txt
 ---
 
 ## Approach

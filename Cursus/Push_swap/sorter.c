@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:57:21 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/19 03:18:35 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/20 16:02:20 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	sort_three(t_node **a)
 	int	z;
 
 	if (!a || !*a || !(*a)->next || !(*a)->next->next)
-		return;
+		return ;
 	x = (*a)->value;
 	y = (*a)->next->value;
 	z = (*a)->next->next->value;
-	if (x > y && y < z && x > z)
+	if (x > y && y < z && x < z)
 		swap_a(a);
 	else if (x > y && y > z)
 	{

@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/17 12:46:30 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/19 02:02:41 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/20 16:01:39 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_split(char **split)
 {
-	int		i;
+	int	i;
 
 	if (!split)
 		return ;
@@ -46,6 +46,7 @@ int	is_number(const char *s)
 	}
 	return (1);
 }
+
 int	has_duplicate(t_node *stack, int value)
 {
 	while (stack)
@@ -56,6 +57,7 @@ int	has_duplicate(t_node *stack, int value)
 	}
 	return (0);
 }
+
 int	append_number(t_node **stack, const char *str)
 {
 	long	n;

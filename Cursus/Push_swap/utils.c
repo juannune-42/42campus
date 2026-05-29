@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 13:45:45 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/20 10:34:13 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/20 16:00:37 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	free_stack(t_node **stack)
 
 int	is_stack_sorted(t_node **stack)
 {
-	t_node *cur = *stack;
+	t_node	*cur;
+
+	cur = *stack;
 	while (cur && cur->next)
 	{
 		if (cur->value > cur->next->value)

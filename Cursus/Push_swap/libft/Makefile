@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+         #
+#    By: juannune <juannune@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 14:59:00 by vcodrean          #+#    #+#              #
-#    Updated: 2025/11/29 03:35:47 by juannune         ###   ########.fr        #
+#    Updated: 2026/05/20 16:07:37 by juannune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,17 +49,16 @@ MY_SOURCES =	ft_atoi.c\
 				ft_putstr_fd.c\
 				ft_putnbr_fd.c\
 				ft_putchar_fd.c\
-				ft_putendl_fd.c
-
-MY_SOURCES_BONUS =    ft_lstnew.c\
-                      ft_lstmap.c\
-                      ft_lstsize.c\
-                      ft_lstlast.c\
-                      ft_lstiter.c\
-                      ft_lstclear.c\
-                      ft_lstdelone.c\
-                      ft_lstadd_back.c\
-                      ft_lstadd_front.c
+				ft_putendl_fd.c\
+				ft_lstnew.c\
+                ft_lstmap.c\
+                ft_lstsize.c\
+                ft_lstlast.c\
+                ft_lstiter.c\
+                ft_lstclear.c\
+                ft_lstdelone.c\
+                ft_lstadd_back.c\
+                ft_lstadd_front.c
 
 OBJS = $(MY_SOURCES:.c=.o)
 OBJS_BONUS = $(MY_SOURCES_BONUS:.c=.o)

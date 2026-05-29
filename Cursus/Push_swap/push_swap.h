@@ -6,7 +6,7 @@
 /*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 03:10:56 by juannune          #+#    #+#             */
-/*   Updated: 2026/05/19 02:31:10 by juannune         ###   ########.fr       */
+/*   Updated: 2026/05/20 16:00:24 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int					is_stack_sorted(t_node **stack);
 long				ft_atol(const char *str);
 
 /* indexer*/
-void	ft_indexer(t_node *stack);
+void				ft_indexer(t_node *stack);
 
 /* operations */
 void				swap_a(t_node **stack);
