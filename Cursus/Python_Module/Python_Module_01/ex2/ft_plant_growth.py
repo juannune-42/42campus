@@ -4,7 +4,7 @@ class Plant:
         self.height = height
         self.days = days
 
-    def info(self):
+    def show(self):
         print(f"{self.name}: {self.height}cm, {self.days} days old")
 
     def grow(self):
@@ -19,12 +19,12 @@ if __name__ == "__main__":
     initial_height = plant.height
 
     print("=== Garden Plant Growth ===")
-    plant.info()
+    plant.show()
     for day in range(1, 8):
         print(f"=== Day {day} ===")
-        plant.info()
         plant.grow()
         plant.age()
+        plant.show()
 
     growth = plant.height - initial_height
     print(f"Growth this week: {round(growth, 1)}cm\n")
