@@ -17,21 +17,19 @@ class Plant:
     def grow(self) -> None:
         self.height = round(self.height + self.growth_rate, 1)
 
-    def age_plant(self) -> None:
+    def age(self) -> None:
         self.days += 1
 
 
 if __name__ == "__main__":
     plant = Plant("Rose", 25.0, 30, 0.8)
     initial_height: float = plant.height
-
     print("=== Garden Plant Growth ===")
     plant.show()
     for day in range(1, 8):
         print(f"=== Day {day} ===")
         plant.grow()
-        plant.age_plant()
+        plant.age()
         plant.show()
-
     growth: float = round(plant.height - initial_height, 1)
     print(f"Growth this week: {growth}cm")
