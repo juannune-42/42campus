@@ -1,0 +1,21 @@
+# A-Maze-ing configuration file
+# Lines starting with # are comments and are ignored.
+#
+# Mandatory keys:
+#   WIDTH        - number of columns (integer >= 2)
+#   HEIGHT       - number of rows    (integer >= 2)
+#   ENTRY        - entry cell as x,y (0-indexed)
+#   EXIT         - exit  cell as x,y (0-indexed)
+#   OUTPUT_FILE  - path of the output hex file
+#   PERFECT      - True = single path between entry and exit
+#
+# Optional keys:
+#   SEED         - integer seed for reproducibility (omit for random)
+
+WIDTH=20
+HEIGHT=15
+ENTRY=0,0
+EXIT=19,14
+OUTPUT_FILE=maze.txt
+PERFECT=True
+SEED=42

@@ -18,10 +18,16 @@ class Plant:
             self._age = age
         else:
             print(f"{self.name}: Error, age can't be negative")
+<<<<<<< HEAD
         print(
             f"Plant created: {self.name}: "
             f"{self._height:.1f}cm, {self._age} days old"
         )
+=======
+
+        print(f"Plant created: {self.name}: "
+              f"{self._height:.1f}cm, {self._age} days old")
+>>>>>>> a21dbef (A_maze_ing)
 
     def show(self) -> None:
         print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
