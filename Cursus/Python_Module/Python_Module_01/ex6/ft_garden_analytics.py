@@ -28,14 +28,9 @@ class Plant:
         growth_rate: float
     ) -> None:
         self.name = name
-<<<<<<< HEAD
         self._height: float = 0.0
         self._age: int = 0
         self.growth_rate = growth_rate
-=======
-        self._height = height
-        self._age = age
->>>>>>> a21dbef (A_maze_ing)
         self._stats = Plant.Stats()
         if height >= 0:
             self._height = height
@@ -55,19 +50,11 @@ class Plant:
         return cls("Unknown plant", 0.0, 0, 0.0)
 
     def grow(self) -> None:
-<<<<<<< HEAD
         self._height = round(self._height + self.growth_rate, 1)
         self._stats.add_grow()
 
     def age(self) -> None:
         self._age += 1
-=======
-        self._height = round(self._height + 8.0, 1)
-        self._stats.add_grow()
-
-    def age(self) -> None:
-        self._age += 20
->>>>>>> a21dbef (A_maze_ing)
         self._stats.add_age()
 
     def show(self) -> None:
@@ -120,12 +107,8 @@ class Tree(Plant):
         self._shade_calls += 1
         print(
             f"Tree {self.name} now produces a shade of "
-<<<<<<< HEAD
             f"{self._height:.1f}cm long and "
             f"{self.trunk_diameter:.1f}cm wide."
-=======
-            f"{self._height:.1f}cm long and {self.trunk_diameter:.1f}cm wide."
->>>>>>> a21dbef (A_maze_ing)
         )
 
     def show(self) -> None:
@@ -149,13 +132,6 @@ class Seed(Flower):
         super().__init__(name, height, age, growth_rate, color)
         self.seeds = 0
 
-<<<<<<< HEAD
-=======
-    def grow(self) -> None:
-        self._height = round(self._height + 30.0, 1)
-        self._stats.add_grow()
-
->>>>>>> a21dbef (A_maze_ing)
     def age(self) -> None:
         self._age += 20
         self._stats.add_age()

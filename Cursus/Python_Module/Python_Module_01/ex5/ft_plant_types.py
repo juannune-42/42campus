@@ -7,7 +7,6 @@ class Plant:
         growth_rate: float
     ) -> None:
         self.name = name
-<<<<<<< HEAD
         self._height: float = 0.0
         self._age: int = 0
         self.growth_rate = growth_rate
@@ -45,16 +44,6 @@ class Plant:
 
     def grow(self) -> None:
         self._height = round(self._height + self.growth_rate, 1)
-=======
-        self._height = height
-        self._age = age
-
-    def show(self) -> None:
-        print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
-
-    def grow(self) -> None:
-        self._height = round(self._height + 1.0, 1)
->>>>>>> a21dbef (A_maze_ing)
 
     def age(self) -> None:
         self._age += 1
@@ -100,12 +89,8 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         print(
             f"Tree {self.name} now produces a shade of "
-<<<<<<< HEAD
             f"{self.get_height():.1f}cm long and "
             f"{self.trunk_diameter:.1f}cm wide."
-=======
-            f"{self._height:.1f}cm long and {self.trunk_diameter:.1f}cm wide."
->>>>>>> a21dbef (A_maze_ing)
         )
 
     def show(self) -> None:
@@ -127,19 +112,9 @@ class Vegetable(Plant):
         self.nutritional_value: int = 0
 
     def grow(self) -> None:
-<<<<<<< HEAD
         self._height = round(self._height + self.growth_rate, 1)
         self.nutritional_value += 1
 
-=======
-        self._height = round(self._height + 2.1, 1)
-        self.nutritional_value += 1
-
-    def age(self) -> None:
-        self._age += 1
-        self.nutritional_value += 1
-
->>>>>>> a21dbef (A_maze_ing)
     def show(self) -> None:
         super().show()
         print(f" Harvest season: {self.harvest_season}")
