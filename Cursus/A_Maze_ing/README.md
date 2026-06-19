@@ -97,15 +97,15 @@ python3 -m build --outdir .
 
 ### AI usage
 
-Claude (Anthropic) was used to generate initial code structure, type hints,
-and this README. All output was reviewed and tested before use.
+IA was used to information, type hints,
+and help with the README.
 
 ## Team and project management
 
 ### Roles
 | Member    | Role                                      |
 |-----------|-------------------------------------------|
-| \<login\> | Algorithm, output format, terminal render |
+| \<juannune\> | Algorithm, output format, terminal render |
 
 ### Planning
 - Day 1: algorithm + output file

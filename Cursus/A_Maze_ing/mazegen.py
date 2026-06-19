@@ -37,7 +37,9 @@ S: int = 0b0100
 W: int = 0b1000
 
 OPPOSITE: dict[int, int] = {N: S, S: N, E: W, W: E}
-DELTA: dict[int, tuple[int, int]] = {N: (0, -1), E: (1, 0), S: (0, 1), W: (-1, 0)}
+DELTA: dict[int, tuple[int, int]] = {
+    N: (0, -1), E: (1, 0), S: (0, 1), W: (-1, 0)
+    }
 
 # "42" pixel art, 7 wide x 6 tall, relative (x, y) coords
 DIGIT_42: list[tuple[int, int]] = [
