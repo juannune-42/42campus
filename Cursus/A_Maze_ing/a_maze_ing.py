@@ -1,8 +1,3 @@
-"""A-Maze-ing: maze generator with terminal display.
-
-Usage:
-    python3 a_maze_ing.py config.txt
-"""
 
 import os
 import sys
@@ -10,9 +5,6 @@ from typing import Optional
 
 from mazegen import MazeGenerator, N, E, S, W, DELTA
 
-# ---------------------------------------------------------------------------
-# ANSI colours
-# ---------------------------------------------------------------------------
 RST = "\033[0m"
 WALL_COLORS = [
     "\033[37m",   # white
@@ -21,22 +13,17 @@ WALL_COLORS = [
     "\033[36m",   # cyan
     "\033[35m",   # magenta
 ]
-C_PATH = "\033[96m"   # bright cyan
-C_ENTRY = "\033[95m"   # bright magenta
-C_EXIT = "\033[91m"   # bright red
-C_42 = "\033[48;5;240m"  # grey background for "42" interiors
+C_PATH = "\033[96m"         # bright cyan
+C_ENTRY = "\033[95m"        # bright magenta
+C_EXIT = "\033[91m"         # bright red
+C_42 = "\033[48;5;240m"     # grey background for "42" interiors
 
 WALL = "█"
 SPACE = " "
 PATH = "·"
 
 
-# ---------------------------------------------------------------------------
-# Config
-# ---------------------------------------------------------------------------
-
 class Config:
-    """Parsed maze configuration."""
 
     REQUIRED = ["WIDTH", "HEIGHT", "ENTRY", "EXIT", "OUTPUT_FILE", "PERFECT"]
 
@@ -44,7 +31,6 @@ class Config:
                  entry: tuple[int, int], exit_: tuple[int, int],
                  output_file: str, perfect: bool,
                  seed: Optional[int]) -> None:
-        """Store all config values."""
         self.width = width
         self.height = height
         self.entry = entry
@@ -55,18 +41,6 @@ class Config:
 
     @classmethod
     def from_file(cls, path: str) -> "Config":
-        """Parse KEY=VALUE config file.
-
-        Args:
-            path: Path to the config file.
-
-        Returns:
-            Populated Config instance.
-
-        Raises:
-            FileNotFoundError: File does not exist.
-            ValueError: Missing or invalid values.
-        """
         try:
             with open(path) as fh:
                 lines = fh.readlines()
@@ -130,17 +104,7 @@ class Config:
         return cls(w, h, entry, exit_, out, perf_raw == "true", seed)
 
 
-# ---------------------------------------------------------------------------
-# Output file
-# ---------------------------------------------------------------------------
-
 def write_output(gen: MazeGenerator, path: str) -> None:
-    """Write hex maze + entry/exit/solution to file.
-
-    Args:
-        gen: Populated MazeGenerator.
-        path: Output file path.
-    """
     with open(path, "w") as fh:
         for row in gen.grid_hex:
             fh.write(row + "\n")
@@ -149,10 +113,6 @@ def write_output(gen: MazeGenerator, path: str) -> None:
         fh.write(f"{gen.exit[0]},{gen.exit[1]}\n")
         fh.write("".join(gen.solution) + "\n")
 
-
-# ---------------------------------------------------------------------------
-# Renderer
-# ---------------------------------------------------------------------------
 
 def _solution_cells(gen: MazeGenerator) -> set[tuple[int, int]]:
     cells: set[tuple[int, int]] = {gen.entry}
@@ -168,22 +128,11 @@ def _solution_cells(gen: MazeGenerator) -> set[tuple[int, int]]:
 
 def render(gen: MazeGenerator, wall_color: str,
            show_path: bool) -> str:
-    """Render maze as coloured ASCII block art.
-
-    Args:
-        gen: Populated MazeGenerator.
-        wall_color: ANSI colour for walls.
-        show_path: Whether to draw solution path.
-
-    Returns:
-        Multi-line string ready to print.
-    """
     path_cells = _solution_cells(gen) if show_path else set()
     rows = gen.height * 2 + 1
     cols = gen.width * 2 + 1
     cg = [[SPACE] * cols for _ in range(rows)]
 
-    # Corner posts
     for r in range(0, rows, 2):
         for c in range(0, cols, 2):
             cg[r][c] = WALL
@@ -202,19 +151,16 @@ def render(gen: MazeGenerator, wall_color: str,
             if cell & E:
                 cg[r + 1][c + 2] = WALL
 
-    # Entry / exit
     ex, ey = gen.entry
     cg[ey * 2 + 1][ex * 2 + 1] = "E"
     xx, xy = gen.exit
     cg[xy * 2 + 1][xx * 2 + 1] = "X"
 
-    # Path
     if show_path:
         for px, py in path_cells:
             if (px, py) not in (gen.entry, gen.exit):
                 cg[py * 2 + 1][px * 2 + 1] = PATH
 
-    # Colour pass
     lines = []
     for ri, row in enumerate(cg):
         parts = []
@@ -237,16 +183,7 @@ def render(gen: MazeGenerator, wall_color: str,
     return "\n".join(lines)
 
 
-# ---------------------------------------------------------------------------
-# Interactive loop
-# ---------------------------------------------------------------------------
-
 def run(cfg: Config) -> None:
-    """Main interactive loop.
-
-    Args:
-        cfg: Parsed configuration.
-    """
     color_idx = 0
     show_path = False
     seed = cfg.seed
@@ -286,12 +223,7 @@ def run(cfg: Config) -> None:
             break
 
 
-# ---------------------------------------------------------------------------
-# Entry point
-# ---------------------------------------------------------------------------
-
 def main() -> None:
-    """Parse arguments and run the maze program."""
     if len(sys.argv) != 2:
         print("Usage: python3 a_maze_ing.py config.txt", file=sys.stderr)
         sys.exit(1)

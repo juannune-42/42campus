@@ -1,0 +1,26 @@
+# Python temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Mypy cache
+.mypy_cache/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Packing and distribution files
+*.egg-info/
+dist/
+build/
+
+# Files generated during local testingt
+maze.txt
+
+# IDE configuration files
+.zed/
+.vscode/
+.DS_Store

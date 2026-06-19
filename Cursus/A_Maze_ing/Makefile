@@ -1,9 +1,7 @@
 CONFIG ?= config.txt
 
-.PHONY: install run debug clean lint lint-strict build
-
 install:
-	pip install flake8 mypy build --break-system-packages
+	pip install flake8 mypy build
 
 run:
 	python3 a_maze_ing.py $(CONFIG)
@@ -29,3 +27,5 @@ lint-strict:
 
 build:
 	python3 -m build --outdir .
+
+.PHONY: install run debug clean lint lint-strict build
