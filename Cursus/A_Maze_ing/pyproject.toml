@@ -5,14 +5,8 @@ build-backend = "setuptools.backends.legacy:build"
 [project]
 name = "mazegen"
 version = "1.0.0"
-description = "Reusable maze generator using the recursive backtracker algorithm."
-readme = "README.md"
-license = { text = "MIT" }
+description = "Reusable maze generator — recursive backtracker algorithm."
 requires-python = ">=3.10"
-keywords = ["maze", "generator", "algorithm", "42"]
-
-[project.urls]
-Homepage = "https://github.com/yourlogin/a-maze-ing"
 
 [tool.setuptools]
 py-modules = ["mazegen"]

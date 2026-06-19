@@ -1,4 +1,4 @@
-"""A-Maze-ing: maze generator with ASCII terminal display.
+"""A-Maze-ing: maze generator with terminal display.
 
 Usage:
     python3 a_maze_ing.py config.txt
@@ -11,61 +11,40 @@ from typing import Optional
 from mazegen import MazeGenerator, N, E, S, W, DELTA
 
 # ---------------------------------------------------------------------------
-# ANSI colour helpers
+# ANSI colours
 # ---------------------------------------------------------------------------
-
-COLORS: list[str] = [
+RST = "\033[0m"
+WALL_COLORS = [
     "\033[37m",   # white
     "\033[33m",   # yellow
     "\033[32m",   # green
     "\033[36m",   # cyan
     "\033[35m",   # magenta
-    "\033[31m",   # red
 ]
-RESET: str = "\033[0m"
-COLOR_PATH: str = "\033[96m"   # bright cyan for solution path
-COLOR_ENTRY: str = "\033[95m"  # bright magenta
-COLOR_EXIT: str = "\033[91m"   # bright red
-COLOR_42: str = "\033[93m"     # bright yellow for "42" pattern
+C_PATH  = "\033[96m"   # bright cyan
+C_ENTRY = "\033[95m"   # bright magenta
+C_EXIT  = "\033[91m"   # bright red
+C_42    = "\033[48;5;240m"  # grey background for "42" interiors
 
-
-def clear() -> None:
-    """Clear the terminal screen."""
-    os.system("cls" if os.name == "nt" else "clear")
+WALL  = "█"
+SPACE = " "
+PATH  = "·"
 
 
 # ---------------------------------------------------------------------------
-# Configuration parsing
+# Config
 # ---------------------------------------------------------------------------
 
 class Config:
-    """Holds maze generation configuration loaded from a file.
+    """Parsed maze configuration."""
 
-    Attributes:
-        width: Maze width.
-        height: Maze height.
-        entry: (x, y) entry cell.
-        exit_: (x, y) exit cell.
-        output_file: Path to write the hex maze output.
-        perfect: Whether to generate a perfect maze.
-        seed: Optional random seed.
-    """
+    REQUIRED = ["WIDTH", "HEIGHT", "ENTRY", "EXIT", "OUTPUT_FILE", "PERFECT"]
 
-    REQUIRED_KEYS: list[str] = [
-        "WIDTH", "HEIGHT", "ENTRY", "EXIT", "OUTPUT_FILE", "PERFECT",
-    ]
-
-    def __init__(
-        self,
-        width: int,
-        height: int,
-        entry: tuple[int, int],
-        exit_: tuple[int, int],
-        output_file: str,
-        perfect: bool,
-        seed: Optional[int] = None,
-    ) -> None:
-        """Initialise config with all required fields."""
+    def __init__(self, width: int, height: int,
+                 entry: tuple[int, int], exit_: tuple[int, int],
+                 output_file: str, perfect: bool,
+                 seed: Optional[int]) -> None:
+        """Store all config values."""
         self.width = width
         self.height = height
         self.entry = entry
@@ -76,78 +55,70 @@ class Config:
 
     @classmethod
     def from_file(cls, path: str) -> "Config":
-        """Parse a KEY=VALUE configuration file.
+        """Parse KEY=VALUE config file.
 
         Args:
             path: Path to the config file.
 
         Returns:
-            A populated Config instance.
+            Populated Config instance.
 
         Raises:
-            FileNotFoundError: If the file does not exist.
-            ValueError: If required keys are missing or values are invalid.
+            FileNotFoundError: File does not exist.
+            ValueError: Missing or invalid values.
         """
-        if not os.path.isfile(path):
+        try:
+            with open(path) as fh:
+                lines = fh.readlines()
+        except FileNotFoundError:
             raise FileNotFoundError(f"Config file not found: {path}")
 
         data: dict[str, str] = {}
-        with open(path, "r") as fh:
-            for lineno, line in enumerate(fh, 1):
-                line = line.strip()
-                if not line or line.startswith("#"):
-                    continue
-                if "=" not in line:
-                    raise ValueError(
-                        f"Line {lineno}: expected KEY=VALUE, got: {line!r}"
-                    )
-                key, _, value = line.partition("=")
-                data[key.strip().upper()] = value.strip()
+        for i, line in enumerate(lines, 1):
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" not in line:
+                raise ValueError(f"Line {i}: expected KEY=VALUE, got {line!r}")
+            k, _, v = line.partition("=")
+            data[k.strip().upper()] = v.strip()
 
-        missing = [k for k in cls.REQUIRED_KEYS if k not in data]
+        missing = [k for k in cls.REQUIRED if k not in data]
         if missing:
-            raise ValueError(f"Missing required keys: {', '.join(missing)}")
+            raise ValueError(f"Missing keys: {', '.join(missing)}")
 
         try:
-            width = int(data["WIDTH"])
-            height = int(data["HEIGHT"])
+            w, h = int(data["WIDTH"]), int(data["HEIGHT"])
         except ValueError:
             raise ValueError("WIDTH and HEIGHT must be integers.")
+        if w < 2 or h < 2:
+            raise ValueError("WIDTH and HEIGHT must be >= 2.")
 
-        if width < 2 or height < 2:
-            raise ValueError("WIDTH and HEIGHT must be at least 2.")
-
-        def parse_coords(raw: str, label: str) -> tuple[int, int]:
+        def coords(raw: str, label: str) -> tuple[int, int]:
             parts = raw.split(",")
             if len(parts) != 2:
-                raise ValueError(
-                    f"{label} must be 'x,y', got: {raw!r}"
-                )
+                raise ValueError(f"{label} must be x,y")
             try:
                 return int(parts[0]), int(parts[1])
             except ValueError:
-                raise ValueError(
-                    f"{label} coordinates must be integers, got: {raw!r}"
-                )
+                raise ValueError(f"{label} coords must be integers.")
 
-        entry = parse_coords(data["ENTRY"], "ENTRY")
-        exit_ = parse_coords(data["EXIT"], "EXIT")
-
-        if not (0 <= entry[0] < width and 0 <= entry[1] < height):
-            raise ValueError(f"ENTRY {entry} is outside maze bounds.")
-        if not (0 <= exit_[0] < width and 0 <= exit_[1] < height):
-            raise ValueError(f"EXIT {exit_} is outside maze bounds.")
+        entry = coords(data["ENTRY"], "ENTRY")
+        exit_ = coords(data["EXIT"], "EXIT")
+        if not (0 <= entry[0] < w and 0 <= entry[1] < h):
+            raise ValueError(f"ENTRY {entry} out of bounds.")
+        if not (0 <= exit_[0] < w and 0 <= exit_[1] < h):
+            raise ValueError(f"EXIT {exit_} out of bounds.")
         if entry == exit_:
-            raise ValueError("ENTRY and EXIT must be different cells.")
+            raise ValueError("ENTRY and EXIT must differ.")
 
-        output_file = data["OUTPUT_FILE"]
-        if not output_file:
+        out = data["OUTPUT_FILE"]
+        if not out:
             raise ValueError("OUTPUT_FILE cannot be empty.")
 
-        perfect_raw = data["PERFECT"].lower()
-        if perfect_raw not in ("true", "false"):
-            raise ValueError("PERFECT must be 'True' or 'False'.")
-        perfect = perfect_raw == "true"
+        perf_raw = data["PERFECT"].lower()
+        if perf_raw not in ("true", "false"):
+            raise ValueError("PERFECT must be True or False.")
 
         seed: Optional[int] = None
         if "SEED" in data:
@@ -156,33 +127,18 @@ class Config:
             except ValueError:
                 raise ValueError("SEED must be an integer.")
 
-        return cls(
-            width=width,
-            height=height,
-            entry=entry,
-            exit_=exit_,
-            output_file=output_file,
-            perfect=perfect,
-            seed=seed,
-        )
+        return cls(w, h, entry, exit_, out, perf_raw == "true", seed)
 
 
 # ---------------------------------------------------------------------------
-# Output file writer
+# Output file
 # ---------------------------------------------------------------------------
 
 def write_output(gen: MazeGenerator, path: str) -> None:
-    """Write the maze to the output file in hex format.
-
-    Format:
-        - One row per line of hex digits (no spaces).
-        - An empty line.
-        - Entry coordinates: x,y
-        - Exit coordinates: x,y
-        - Solution path: string of N/E/S/W characters.
+    """Write hex maze + entry/exit/solution to file.
 
     Args:
-        gen: A MazeGenerator that has already run generate().
+        gen: Populated MazeGenerator.
         path: Output file path.
     """
     with open(path, "w") as fh:
@@ -195,180 +151,137 @@ def write_output(gen: MazeGenerator, path: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# ASCII renderer
+# Renderer
 # ---------------------------------------------------------------------------
 
-def _path_cells(
-    gen: MazeGenerator,
-) -> set[tuple[int, int]]:
-    """Return the set of (x, y) cells on the solution path."""
-    cells: set[tuple[int, int]] = set()
+def _solution_cells(gen: MazeGenerator) -> set[tuple[int, int]]:
+    cells: set[tuple[int, int]] = {gen.entry}
     x, y = gen.entry
-    cells.add((x, y))
-    dir_map: dict[str, int] = {"N": N, "E": E, "S": S, "W": W}
+    dm = {"N": N, "E": E, "S": S, "W": W}
     for ch in gen.solution:
-        d = dir_map[ch]
-        dx, dy = DELTA[d]
+        dx, dy = DELTA[dm[ch]]
         x += dx
         y += dy
         cells.add((x, y))
     return cells
 
 
-def render_ascii(
-    gen: MazeGenerator,
-    wall_color: str = COLORS[0],
-    show_path: bool = False,
-    show_42: bool = True,
-) -> str:
-    """Render the maze as an ASCII string with ANSI colours.
-
-    Each cell is drawn as a 2x2 block of characters in the output grid.
-    Top-left corner is always a wall post (+).
+def render(gen: MazeGenerator, wall_color: str,
+           show_path: bool) -> str:
+    """Render maze as coloured ASCII block art.
 
     Args:
         gen: Populated MazeGenerator.
-        wall_color: ANSI escape code for wall colour.
-        show_path: Whether to highlight the solution path.
-        show_42: Whether to colour the "42" pattern cells.
+        wall_color: ANSI colour for walls.
+        show_path: Whether to draw solution path.
 
     Returns:
-        A multi-line string ready to print.
+        Multi-line string ready to print.
     """
-    W_CHAR = "█"
-    H_CHAR = "█"
-    SPACE = " "
-    PATH_CHAR = "·"
+    path_cells = _solution_cells(gen) if show_path else set()
+    rows = gen.height * 2 + 1
+    cols = gen.width * 2 + 1
+    cg = [[SPACE] * cols for _ in range(rows)]
 
-    path_cells: set[tuple[int, int]] = (
-        _path_cells(gen) if show_path else set()
-    )
+    # Corner posts
+    for r in range(0, rows, 2):
+        for c in range(0, cols, 2):
+            cg[r][c] = WALL
 
-    # Output grid dimensions in characters
-    rows_ch = gen.height * 2 + 1
-    cols_ch = gen.width * 2 + 1
-
-    # Build character grid
-    cg: list[list[str]] = [[SPACE] * cols_ch for _ in range(rows_ch)]
-
-    # Draw corner posts
-    for row in range(0, rows_ch, 2):
-        for col in range(0, cols_ch, 2):
-            cg[row][col] = W_CHAR
-
-    # Draw walls
+    # Walls
     for y in range(gen.height):
         for x in range(gen.width):
             cell = gen.grid[y][x]
-            cr = y * 2
-            cc = x * 2
+            r, c = y * 2, x * 2
             if cell & N:
-                cg[cr][cc + 1] = H_CHAR
+                cg[r][c + 1] = WALL
             if cell & S:
-                cg[cr + 2][cc + 1] = H_CHAR
+                cg[r + 2][c + 1] = WALL
             if cell & W:
-                cg[cr + 1][cc] = W_CHAR
+                cg[r + 1][c] = WALL
             if cell & E:
-                cg[cr + 1][cc + 2] = W_CHAR
+                cg[r + 1][c + 2] = WALL
 
-    # Draw path
-    if show_path:
-        for (px, py) in path_cells:
-            if (px, py) == gen.entry:
-                continue
-            if (px, py) == gen.exit:
-                continue
-            cg[py * 2 + 1][px * 2 + 1] = PATH_CHAR
-
-    # Draw entry/exit markers
+    # Entry / exit
     ex, ey = gen.entry
     cg[ey * 2 + 1][ex * 2 + 1] = "E"
     xx, xy = gen.exit
     cg[xy * 2 + 1][xx * 2 + 1] = "X"
 
-    # Convert to coloured string
-    lines: list[str] = []
-    for row_idx, row in enumerate(cg):
-        line_parts: list[str] = []
-        for col_idx, ch in enumerate(row):
-            if ch == W_CHAR or ch == H_CHAR:
-                # Check if this is a "42" wall post area
-                cx = col_idx // 2
-                cy = row_idx // 2
-                if show_42 and (cx, cy) in gen.forty_two_cells:
-                    line_parts.append(COLOR_42 + ch + RESET)
-                else:
-                    line_parts.append(wall_color + ch + RESET)
-            elif ch == "E":
-                line_parts.append(COLOR_ENTRY + ch + RESET)
-            elif ch == "X":
-                line_parts.append(COLOR_EXIT + ch + RESET)
-            elif ch == PATH_CHAR:
-                line_parts.append(COLOR_PATH + ch + RESET)
-            else:
-                line_parts.append(ch)
-        lines.append("".join(line_parts))
+    # Path
+    if show_path:
+        for px, py in path_cells:
+            if (px, py) not in (gen.entry, gen.exit):
+                cg[py * 2 + 1][px * 2 + 1] = PATH
 
+    # Colour pass
+    lines = []
+    for ri, row in enumerate(cg):
+        parts = []
+        for ci, ch in enumerate(row):
+            cx, cy = ci // 2, ri // 2
+            in_42 = (cx, cy) in gen.forty_two_cells
+            if ch == WALL:
+                parts.append(wall_color + ch + RST)
+            elif ch == SPACE and (ri % 2 == 1) and (ci % 2 == 1) and in_42:
+                parts.append(C_42 + ch + RST)
+            elif ch == "E":
+                parts.append(C_ENTRY + ch + RST)
+            elif ch == "X":
+                parts.append(C_EXIT + ch + RST)
+            elif ch == PATH:
+                parts.append(C_PATH + ch + RST)
+            else:
+                parts.append(ch)
+        lines.append("".join(parts))
     return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
-# Interactive terminal menu
+# Interactive loop
 # ---------------------------------------------------------------------------
 
-def run_interactive(cfg: Config) -> None:
-    """Main interactive loop: render, interact, regenerate.
+def run(cfg: Config) -> None:
+    """Main interactive loop.
 
     Args:
         cfg: Parsed configuration.
     """
-    color_idx: int = 0
-    show_path: bool = False
-    seed: Optional[int] = cfg.seed
+    color_idx = 0
+    show_path = False
+    seed = cfg.seed
 
-    def make_gen() -> MazeGenerator:
-        g = MazeGenerator(
-            width=cfg.width,
-            height=cfg.height,
-            entry=cfg.entry,
-            exit_=cfg.exit_,
-            seed=seed,
-        )
-        g.generate(perfect=cfg.perfect)
+    def make() -> MazeGenerator:
+        g = MazeGenerator(cfg.width, cfg.height,
+                          cfg.entry, cfg.exit_, seed)
+        g.generate(cfg.perfect)
         write_output(g, cfg.output_file)
         return g
 
-    gen = make_gen()
+    gen = make()
 
     while True:
-        clear()
-        print(render_ascii(
-            gen,
-            wall_color=COLORS[color_idx % len(COLORS)],
-            show_path=show_path,
-        ))
+        os.system("cls" if os.name == "nt" else "clear")
+        print(render(gen, WALL_COLORS[color_idx % len(WALL_COLORS)], show_path))
         print()
         print("=== A-Maze-ing ===")
         print("1. Re-generate a new maze")
-        print("2. Show/Hide path from entry to exit")
-        print("3. Rotate maze wall colors")
+        label = "Hide path" if show_path else "Show path"
+        print(f"2. {label}")
+        print("3. Change colors")
         print("4. Quit")
         choice = input("Choice? (1-4): ").strip()
 
         if choice == "1":
-            seed = None  # New random seed each time
-            gen = make_gen()
+            seed = None
+            gen = make()
             show_path = False
         elif choice == "2":
             show_path = not show_path
         elif choice == "3":
             color_idx += 1
         elif choice == "4":
-            print("Bye!")
             break
-        else:
-            print("Invalid choice. Press Enter to continue.")
-            input()
 
 
 # ---------------------------------------------------------------------------
@@ -376,29 +289,22 @@ def run_interactive(cfg: Config) -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    """Parse args, load config, generate maze, run interactive display."""
+    """Parse arguments and run the maze program."""
     if len(sys.argv) != 2:
-        print(
-            "Usage: python3 a_maze_ing.py config.txt",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-
-    config_path = sys.argv[1]
-    try:
-        cfg = Config.from_file(config_path)
-    except (FileNotFoundError, ValueError) as exc:
-        print(f"Error: {exc}", file=sys.stderr)
+        print("Usage: python3 a_maze_ing.py config.txt", file=sys.stderr)
         sys.exit(1)
 
     try:
-        run_interactive(cfg)
+        cfg = Config.from_file(sys.argv[1])
+    except (FileNotFoundError, ValueError) as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    try:
+        run(cfg)
     except KeyboardInterrupt:
-        print("\nInterrupted.")
+        print("\nBye!")
         sys.exit(0)
-    except Exception as exc:  # pragma: no cover
-        print(f"Unexpected error: {exc}", file=sys.stderr)
-        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -34,6 +34,7 @@ def distance(
 
 def main() -> None:
     print("=== Game Coordinate System ===")
+    print()
     print("Get a first set of coordinates")
     pos1 = get_player_pos()
     print(f"Got a first tuple: {pos1}")
