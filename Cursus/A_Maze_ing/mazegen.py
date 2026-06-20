@@ -68,7 +68,7 @@ class MazeGenerator:
         return ["".join(format(c, "X") for c in row) for row in self.grid]
 
     def _reset(self) -> None:
-        self.grid = [[N | E | S | W] * self.width for row in range(self.height)]
+        self.grid = [[N | E | S | W] * self.width for _ in range(self.height)]
 
     def _in(self, x: int, y: int) -> bool:
         return 0 <= x < self.width and 0 <= y < self.height
