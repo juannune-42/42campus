@@ -1,31 +1,3 @@
-"""mazegen - Reusable maze generation module.
-
-Generates mazes using the recursive backtracker (DFS) algorithm.
-
-Basic example::
-
-    from mazegen import MazeGenerator
-
-    gen = MazeGenerator(width=20, height=15, seed=42)
-    gen.generate(perfect=True)
-
-    grid     = gen.grid        # list[list[int]] wall bitmask per cell
-    solution = gen.solution    # list[str] of 'N','E','S','W'
-    entry    = gen.entry       # (x, y)
-    exit_    = gen.exit        # (x, y)
-
-Custom parameters::
-
-    gen = MazeGenerator(width=30, height=20,
-                        entry=(0, 0), exit_=(29, 19), seed=1337)
-    gen.generate(perfect=False)
-
-Wall bitmask (one hex digit per cell):
-    bit 0 = North wall closed
-    bit 1 = East  wall closed
-    bit 2 = South wall closed
-    bit 3 = West  wall closed
-"""
 
 import random
 from collections import deque
@@ -43,9 +15,9 @@ DELTA: dict[int, tuple[int, int]] = {
 
 # "42" pixel art, 7 wide x 6 tall, relative (x, y) coords
 DIGIT_42: list[tuple[int, int]] = [
-    (0, 0), (0, 1), (0, 2), (0, 3),
-    (1, 3),
-    (2, 3), (2, 4), (2, 5),
+    (0, 0), (0, 1), (0, 2),
+    (1, 2),
+    (2, 2), (2, 3), (2, 4),
     (4, 0), (4, 2), (4, 3), (4, 4),
     (5, 0), (5, 2), (5, 4),
     (6, 0), (6, 1), (6, 2), (6, 4),
@@ -55,19 +27,6 @@ PATTERN_H: int = 6
 
 
 class MazeGenerator:
-    """Maze generator using the recursive backtracker (DFS) algorithm.
-
-    Args:
-        width: Number of columns (>= 2).
-        height: Number of rows (>= 2).
-        entry: (x, y) entry cell.
-        exit_: (x, y) exit cell.
-        seed: Random seed for reproducibility.
-
-    Raises:
-        ValueError: On invalid parameters.
-    """
-
     def __init__(
         self,
         width: int = 20,
@@ -76,7 +35,6 @@ class MazeGenerator:
         exit_: tuple[int, int] = (19, 14),
         seed: Optional[int] = None,
     ) -> None:
-        """Initialise the generator."""
         if width < 2 or height < 2:
             raise ValueError("Maze must be at least 2x2.")
         if not (0 <= entry[0] < width and 0 <= entry[1] < height):
@@ -92,16 +50,11 @@ class MazeGenerator:
         self.exit = exit_
         self._rng: random.Random = random.Random(seed)
 
-        self.grid: list[list[int]] = [[0] * width for _ in range(height)]
+        self.grid: list[list[int]] = [[0] * width for row in range(height)]
         self.solution: list[str] = []
         self.forty_two_cells: set[tuple[int, int]] = set()
 
     def generate(self, perfect: bool = True) -> None:
-        """Generate the maze.
-
-        Args:
-            perfect: True = single path (spanning tree). False = adds loops.
-        """
         self._reset()
         self._place_42()
         self._carve(perfect)
@@ -112,13 +65,10 @@ class MazeGenerator:
 
     @property
     def grid_hex(self) -> list[str]:
-        """Each row as a string of uppercase hex digits."""
         return ["".join(format(c, "X") for c in row) for row in self.grid]
 
-    # ------------------------------------------------------------------
-
     def _reset(self) -> None:
-        self.grid = [[N | E | S | W] * self.width for _ in range(self.height)]
+        self.grid = [[N | E | S | W] * self.width for row in range(self.height)]
 
     def _in(self, x: int, y: int) -> bool:
         return 0 <= x < self.width and 0 <= y < self.height
@@ -164,7 +114,6 @@ class MazeGenerator:
             if not moved:
                 stack.pop()
 
-        # Connect isolated non-42 cells
         for cy in range(self.height):
             for cx in range(self.width):
                 if (cx, cy) in self.forty_two_cells or (cx, cy) in visited:
@@ -213,7 +162,6 @@ class MazeGenerator:
                 self.grid[py][px] &= ~S
 
     def _fix_open_areas(self) -> None:
-        """Break any 3x3 fully open areas."""
         for y in range(self.height - 2):
             for x in range(self.width - 2):
                 if all(

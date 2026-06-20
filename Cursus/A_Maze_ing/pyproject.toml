@@ -1,11 +1,11 @@
 [build-system]
 requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "mazegen"
 version = "1.0.0"
-description = "Reusable maze generator — recursive backtracker algorithm."
+description = "Maze generator and solver library"
 requires-python = ">=3.10"
 
 [tool.setuptools]

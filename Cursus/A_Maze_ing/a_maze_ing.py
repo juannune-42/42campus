@@ -13,10 +13,10 @@ WALL_COLORS = [
     "\033[36m",   # cyan
     "\033[35m",   # magenta
 ]
-C_PATH = "\033[96m"         # bright cyan
-C_ENTRY = "\033[95m"        # bright magenta
-C_EXIT = "\033[91m"         # bright red
-C_42 = "\033[48;5;240m"     # grey background for "42" interiors
+C_PATH = "\033[96m"     # bright cyan
+C_ENTRY = "\033[95m"    # bright magenta
+C_EXIT = "\033[91m"     # bright red
+C_42 = "\033[42m"       # background for "42" interiors
 
 WALL = "█"
 SPACE = " "
