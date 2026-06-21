@@ -1,3 +1,9 @@
+"""Main entry point for the A-Maze-ing maze generator and viewer.
+
+Reads a configuration file, builds a maze with `mazegen.MazeGenerator`,
+writes it to the configured output file, and displays it in the
+terminal with ASCII block art and ANSI colours through an interactive
+menu (regenerate, show/hide solution path, change wall colours)."""
 
 import os
 import sys
@@ -24,6 +30,20 @@ PATH = "·"
 
 
 class Config:
+    """Parsed and validated maze configuration.
+
+    Built from a `KEY=VALUE` configuration file through `from_file`,
+    which is the only supported way to construct a valid instance.
+
+    Attributes:
+        width: Maze width in cells.
+        height: Maze height in cells.
+        entry: Entry coordinates (x, y).
+        exit_: Exit coordinates (x, y).
+        output_file: Path to write the generated maze to.
+        perfect: Whether the maze must be a perfect maze.
+        seed: Optional seed for reproducible generation.
+    """
 
     REQUIRED = ["WIDTH", "HEIGHT", "ENTRY", "EXIT", "OUTPUT_FILE", "PERFECT"]
 
@@ -31,6 +51,17 @@ class Config:
                  entry: tuple[int, int], exit_: tuple[int, int],
                  output_file: str, perfect: bool,
                  seed: Optional[int]) -> None:
+        """Store already-validated configuration values.
+
+        Args:
+            width: Maze width in cells.
+            height: Maze height in cells.
+            entry: Entry coordinates (x, y).
+            exit_: Exit coordinates (x, y).
+            output_file: Path to write the generated maze to.
+            perfect: Whether the maze must be a perfect maze.
+            seed: Optional seed for reproducible generation.
+        """
         self.width = width
         self.height = height
         self.entry = entry
@@ -41,6 +72,20 @@ class Config:
 
     @classmethod
     def from_file(cls, path: str) -> "Config":
+        """Parse and validate a `KEY=VALUE` configuration file.
+
+        Args:
+            path: Path to the configuration file.
+
+        Returns:
+            A fully validated `Config` instance.
+
+        Raises:
+            FileNotFoundError: If `path` does not exist.
+            ValueError: If the file is malformed, a mandatory key is
+                missing, or a value fails validation (wrong type,
+                out-of-bounds coordinates, equal entry/exit, etc.).
+        """
         try:
             with open(path) as fh:
                 lines = fh.readlines()
@@ -69,6 +114,7 @@ class Config:
             raise ValueError("WIDTH and HEIGHT must be >= 2.")
 
         def coords(raw: str, label: str) -> tuple[int, int]:
+            """Parse an 'x,y' string into an (x, y) int tuple."""
             parts = raw.split(",")
             if len(parts) != 2:
                 raise ValueError(f"{label} must be x,y")
@@ -105,8 +151,14 @@ class Config:
 
 
 def write_output(gen: MazeGenerator, path: str) -> None:
+    """Write a generated maze to disk in the subject's output format.
+
+    Args:
+        gen: A maze generator whose `generate` method has run.
+        path: Destination file path.
+    """
     with open(path, "w") as fh:
-        for row in gen.grid_hex:
+        for row in gen.grid_hex():
             fh.write(row + "\n")
         fh.write("\n")
         fh.write(f"{gen.entry[0]},{gen.entry[1]}\n")
@@ -115,6 +167,7 @@ def write_output(gen: MazeGenerator, path: str) -> None:
 
 
 def _solution_cells(gen: MazeGenerator) -> set[tuple[int, int]]:
+    """Return every cell coordinate visited by the solution path."""
     cells: set[tuple[int, int]] = {gen.entry}
     x, y = gen.entry
     dm = {"N": N, "E": E, "S": S, "W": W}
@@ -128,6 +181,16 @@ def _solution_cells(gen: MazeGenerator) -> set[tuple[int, int]]:
 
 def render(gen: MazeGenerator, wall_color: str,
            show_path: bool) -> str:
+    """Render the maze as ANSI-coloured ASCII block art.
+
+    Args:
+        gen: The maze to render.
+        wall_color: ANSI escape code used for wall blocks.
+        show_path: Whether to highlight the entry-to-exit solution.
+
+    Returns:
+        The full multi-line rendered maze, ready to print.
+    """
     path_cells = _solution_cells(gen) if show_path else set()
     rows = gen.height * 2 + 1
     cols = gen.width * 2 + 1
@@ -184,6 +247,15 @@ def render(gen: MazeGenerator, wall_color: str,
 
 
 def run(cfg: Config) -> None:
+    """Drive the interactive terminal session for a maze configuration.
+
+    Generates an initial maze, writes it to the configured output
+    file, then loops showing a menu to regenerate, toggle the
+    solution path, change wall colours, or quit.
+
+    Args:
+        cfg: A validated configuration to generate mazes from.
+    """
     color_idx = 0
     show_path = False
     seed = cfg.seed
@@ -224,6 +296,12 @@ def run(cfg: Config) -> None:
 
 
 def main() -> None:
+    """Parse arguments, load the configuration, and run the program.
+
+    Validates the command-line usage and the configuration file,
+    printing a clear error and exiting with status 1 on any failure
+    instead of letting the program crash.
+    """
     if len(sys.argv) != 2:
         print("Usage: python3 a_maze_ing.py config.txt", file=sys.stderr)
         sys.exit(1)
@@ -236,7 +314,7 @@ def main() -> None:
 
     try:
         run(cfg)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print("\nBye!")
         sys.exit(0)
 

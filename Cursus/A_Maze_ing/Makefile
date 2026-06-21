@@ -13,7 +13,7 @@ clean:
 	find . -type d \( -name __pycache__ -o -name .mypy_cache \
 	  -o -name "*.egg-info" -o -name dist -o -name build \) \
 	  -exec rm -rf {} + 2>/dev/null || true
-	rm -f maze.txt
+	rm -f output_maze.txt
 
 lint:
 	flake8 .

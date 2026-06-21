@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by juannune and rodrigoa.*
+*This project has been created as part of the 42 curriculum by juannune, rodrigoa.*
 
 # A-Maze-ing
 
@@ -75,7 +75,7 @@ gen = MazeGenerator(width=20, height=15, seed=42)
 gen.generate(perfect=True)
 
 print(gen.grid)      # list[list[int]] — wall bitmasks
-print(gen.grid_hex)  # list[str]       — hex rows
+print(gen.grid_hex())  # list[str]       — hex rows
 print(gen.solution)  # list[str]       — ['S','E','N',...]
 print(gen.entry)     # (0, 0)
 print(gen.exit)      # (19, 14)
@@ -97,15 +97,17 @@ python3 -m build --outdir .
 
 ### AI usage
 
-IA was used to information, type hints,
-and help with the README.
+IA was used to gather background information, suggest type hints,
+and help draft this README.
 
 ## Team and project management
 
 ### Roles
-| Member    | Role                                      |
-|-----------|-------------------------------------------|
-| \<juannune\> | Algorithm, output format, terminal render |
+| Member    | Role                                              |
+|-----------|---------------------------------------------------|
+| juannune  | Algorithm, output format, terminal render         |
+| rodrigoa  | README.md, .gitignore, pyproject.toml, Algorithm  |
+
 
 ### Planning
 - Day 1: algorithm + output file
@@ -119,4 +121,4 @@ Separating `mazegen.py` from `a_maze_ing.py` made everything easier to test.
 A graphical display (MLX/pygame) would look better.
 
 ### Tools used
-VSCode, flake8, mypy, Claude (Anthropic).
+VSCode, flake8, mypy.
