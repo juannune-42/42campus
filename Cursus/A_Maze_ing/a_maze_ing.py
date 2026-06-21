@@ -279,7 +279,7 @@ def run(cfg: Config) -> None:
         print("1. Re-generate a new maze")
         label = "Hide path" if show_path else "Show path"
         print(f"2. {label}")
-        print("3. Change colors")
+        print("3. Rotate maze colors colors")
         print("4. Quit")
         choice = input("Choice? (1-4): ").strip()
 
