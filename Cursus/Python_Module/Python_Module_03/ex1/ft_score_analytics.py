@@ -30,6 +30,7 @@ def main() -> None:
     print(f"High score: {max(scores)}")
     print(f"Low score: {min(scores)}")
     print(f"Score range: {max(scores) - min(scores)}")
+    print()
 
 
 if __name__ == "__main__":

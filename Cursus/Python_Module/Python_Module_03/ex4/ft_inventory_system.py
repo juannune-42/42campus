@@ -23,8 +23,17 @@ def parse_inventory(args: list[str]) -> dict[str, int]:
 
 
 def main() -> None:
+    if len(sys.argv) < 2:
+        print("Usage: python3 ft_inventory_system.py <item>:<qty> ...")
+        return
+
     print("=== Inventory System Analysis ===")
     inventory = parse_inventory(sys.argv[1:])
+
+    if not inventory:
+        print("No valid items in inventory.")
+        return
+
     print(f"Got inventory: {inventory}")
 
     items = list(inventory.keys())
@@ -37,9 +46,6 @@ def main() -> None:
         pct = round(qty / total * 100, 1)
         print(f"Item {item} represents {pct}%")
 
-    most = max(inventory, key=lambda k: list(inventory.keys()).index(k)
-               if list(inventory.values()).count(inventory[k]) > 1
-               else -inventory[k])
     max_qty = max(inventory.values())
     min_qty = min(inventory.values())
     most_abundant = next(k for k in inventory if inventory[k] == max_qty)

@@ -17,6 +17,7 @@ def gen_player_achievements() -> set[str]:
 
 def main() -> None:
     print("=== Achievement Tracker System ===")
+    print()
     player_achievements: dict[str, set[str]] = {
         player: gen_player_achievements() for player in PLAYERS
     }
@@ -27,11 +28,13 @@ def main() -> None:
     for a in player_achievements.values():
         all_achievements = all_achievements.union(a)
     print(f"\nAll distinct achievements: {all_achievements}")
+    print()
 
     common = player_achievements[PLAYERS[0]]
     for a in player_achievements.values():
         common = common.intersection(a)
     print(f"Common achievements: {common}")
+    print()
 
     for player, achievements in player_achievements.items():
         others: set[str] = set()
@@ -40,10 +43,11 @@ def main() -> None:
                 others = others.union(other_ach)
         unique = achievements.difference(others)
         print(f"Only {player} has: {unique}")
-
+    print()
     for player, achievements in player_achievements.items():
         missing = all_achievements.difference(achievements)
         print(f"{player} is missing: {missing}")
+    print()
 
 
 if __name__ == "__main__":

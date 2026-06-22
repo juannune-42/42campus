@@ -12,6 +12,7 @@ def main() -> None:
         for i, arg in enumerate(args[1:], 1):
             print(f"Argument {i}: {arg}")
     print(f"Total arguments: {len(args)}")
+    print()
 
 
 if __name__ == "__main__":

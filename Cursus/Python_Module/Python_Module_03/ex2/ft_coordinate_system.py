@@ -41,10 +41,12 @@ def main() -> None:
     print(f"It includes: X={pos1[0]}, Y={pos1[1]}, Z={pos1[2]}")
     d_center = distance(pos1, (0.0, 0.0, 0.0))
     print(f"Distance to center: {round(d_center, 4)}")
+    print()
     print("Get a second set of coordinates")
     pos2 = get_player_pos()
     d = distance(pos1, pos2)
     print(f"Distance between the 2 sets of coordinates: {round(d, 4)}")
+    print()
 
 
 if __name__ == "__main__":
