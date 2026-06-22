@@ -29,7 +29,6 @@ DELTA: dict[int, tuple[int, int]] = {
     N: (0, -1), E: (1, 0), S: (0, 1), W: (-1, 0)
     }
 
-# "42" pixel art, 7 wide x 6 tall, relative (x, y) coords
 DIGIT_42: list[tuple[int, int]] = [
     (0, 0), (0, 1), (0, 2),
     (1, 2),
@@ -101,7 +100,7 @@ class MazeGenerator:
         self.exit = exit_
         self._rng: random.Random = random.Random(seed)
 
-        self.grid: list[list[int]] = [[0] * width for row in range(height)]
+        self.grid: list[list[int]] = [[0] * width for _ in range(height)]
         self.solution: list[str] = []
         self.forty_two_cells: set[tuple[int, int]] = set()
 
@@ -120,6 +119,10 @@ class MazeGenerator:
         """
         self._reset()
         self._place_42()
+        if self.entry in self.forty_two_cells:
+            raise ValueError(f"Entry {self.entry} overlaps with '42' pattern.")
+        if self.exit in self.forty_two_cells:
+            raise ValueError(f"Exit {self.exit} overlaps with '42' pattern.")
         self._carve(perfect)
         self._close_borders()
         self._open_entry_exit()

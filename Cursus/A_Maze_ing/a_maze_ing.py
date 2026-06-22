@@ -200,7 +200,6 @@ def render(gen: MazeGenerator, wall_color: str,
         for c in range(0, cols, 2):
             cg[r][c] = WALL
 
-    # Walls
     for y in range(gen.height):
         for x in range(gen.width):
             cell = gen.grid[y][x]
@@ -263,7 +262,11 @@ def run(cfg: Config) -> None:
     def make() -> MazeGenerator:
         g = MazeGenerator(cfg.width, cfg.height,
                           cfg.entry, cfg.exit_, seed)
-        g.generate(cfg.perfect)
+        try:
+            g.generate(cfg.perfect)
+        except ValueError as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
         write_output(g, cfg.output_file)
         return g
 
@@ -279,7 +282,7 @@ def run(cfg: Config) -> None:
         print("1. Re-generate a new maze")
         label = "Hide path" if show_path else "Show path"
         print(f"2. {label}")
-        print("3. Rotate maze colors colors")
+        print("3. Change colors")
         print("4. Quit")
         choice = input("Choice? (1-4): ").strip()
 

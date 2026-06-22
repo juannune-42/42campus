@@ -40,7 +40,6 @@ def main() -> None:
     most = max(inventory, key=lambda k: list(inventory.keys()).index(k)
                if list(inventory.values()).count(inventory[k]) > 1
                else -inventory[k])
-    # Simpler approach: find max value, pick first key with that value
     max_qty = max(inventory.values())
     min_qty = min(inventory.values())
     most_abundant = next(k for k in inventory if inventory[k] == max_qty)
