@@ -6,6 +6,7 @@ PLAYERS_RAW = ["Alice", "bob", "Charlie", "dylan", "Emma",
 
 def main() -> None:
     print("=== Game Data Alchemist ===")
+    print()
     print(f"Initial list of players: {PLAYERS_RAW}")
 
     all_capitalized = [name.capitalize() for name in PLAYERS_RAW]
