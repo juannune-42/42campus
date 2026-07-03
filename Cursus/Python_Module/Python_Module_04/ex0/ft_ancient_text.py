@@ -8,11 +8,11 @@ def read_file(file_name: str) -> None:
     file: typing.IO | None = None
     try:
         file = open(file_name, "r")
-        print("---")
+        print("---\n")
         print(file.read(), end="")
-        print("---")
+        print("\n---")
         print(f"File '{file_name}' closed.")
-    except Exception as e:
+    except (FileNotFoundError, PermissionError) as e:
         print(f"Error opening file '{file_name}': {e}")
     finally:
         if file is not None:

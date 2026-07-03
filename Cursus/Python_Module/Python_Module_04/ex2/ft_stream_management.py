@@ -12,7 +12,7 @@ def read_file(file_name: str) -> str | None:
         content = file.read()
         print("---")
         print(content, end="")
-        print("---")
+        print("\n---")
         print(f"File '{file_name}' closed.")
     except Exception as e:
         sys.stderr.write(f"[STDERR] Error opening file '{file_name}': {e}\n")
@@ -71,4 +71,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()        
+    main()
