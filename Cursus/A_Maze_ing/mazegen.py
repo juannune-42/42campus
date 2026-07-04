@@ -42,24 +42,17 @@ PATTERN_H: int = 6
 
 
 class MazeGenerator:
-    """Generate, store, and solve a rectangular maze.
+    """Rectangular maze: generation, storage, and solving.
 
-    The maze is represented internally as a grid of wall bitmasks
-    (one int per cell, see module-level ``N``/``E``/``S``/``W``
-    constants). It can be a perfect maze (a spanning tree, single
-    path between any two cells) or a non-perfect one with extra
-    loops, and always contains a visible "42" pattern of fully
-    closed cells unless the maze is too small to fit it.
+    Grid of wall bitmasks (N/E/S/W). Perfect (spanning tree) or looped,
+    with a "42" pattern of closed cells when the size allows it.
 
     Attributes:
-        width: Number of columns.
-        height: Number of rows.
-        entry: Entry cell as (x, y).
-        exit: Exit cell as (x, y).
-        grid: Wall bitmask per cell, indexed as grid[y][x].
-        solution: Shortest path from entry to exit as a list of
-            'N'/'E'/'S'/'W' moves, populated after `generate`.
-        forty_two_cells: Set of (x, y) cells forming the "42" pattern.
+        width, height: Maze dimensions in cells.
+        entry, exit: Entry/exit coordinates (x, y).
+        grid: Wall bitmask per cell, grid[y][x].
+        solution: Entry-to-exit path as N/E/S/W moves.
+        forty_two_cells: Cells forming the "42" pattern.
     """
 
     def __init__(

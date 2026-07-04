@@ -22,7 +22,13 @@ WALL_COLORS = [
 C_PATH = "\033[96m"     # bright cyan
 C_ENTRY = "\033[95m"    # bright magenta
 C_EXIT = "\033[91m"     # bright red
-C_42 = "\033[42m"       # background for "42" interiors
+C_42_OPPOSITE = {
+    "\033[37m": "\033[40m",  # white walls  -> black bg
+    "\033[33m": "\033[44m",  # yellow walls -> blue bg
+    "\033[32m": "\033[45m",  # green walls  -> magenta bg
+    "\033[36m": "\033[41m",  # cyan walls   -> red bg
+    "\033[35m": "\033[42m",  # magenta walls -> green bg
+}   # background for "42" interiors
 
 WALL = "█"
 SPACE = " "
@@ -195,6 +201,7 @@ def render(gen: MazeGenerator, wall_color: str,
     rows = gen.height * 2 + 1
     cols = gen.width * 2 + 1
     cg = [[SPACE] * cols for _ in range(rows)]
+    C_42 = C_42_OPPOSITE.get(wall_color, "")
 
     for r in range(0, rows, 2):
         for c in range(0, cols, 2):

@@ -49,6 +49,8 @@ make build            # build mazegen pip package
 Wall bitmask: bit 0 = North, bit 1 = East, bit 2 = South, bit 3 = West.
 Bit = 1 means wall closed.
 
+**Example**: the digit A is 1010 in binary → bit 1 (East) and bit 3 (West) are set → that cell has its East and West walls closed, North and South open.
+
 ## Maze generation algorithm
 
 **Recursive backtracker (iterative DFS)**
@@ -64,7 +66,7 @@ iteratively (no recursion limit), and naturally generates perfect mazes.
 
 ### Install
 ```bash
-pip install mazegen-1.0.0-py3-none-any.whl
+pip install mazegen-2.1.6-py3-none-any.whl
 ```
 
 ### Usage
@@ -74,11 +76,11 @@ from mazegen import MazeGenerator
 gen = MazeGenerator(width=20, height=15, seed=42)
 gen.generate(perfect=True)
 
-print(gen.grid)      # list[list[int]] — wall bitmasks
-print(gen.grid_hex())  # list[str]       — hex rows
-print(gen.solution)  # list[str]       — ['S','E','N',...]
-print(gen.entry)     # (0, 0)
-print(gen.exit)      # (19, 14)
+print(gen.grid)             # list[list[int]] — wall bitmasks
+print(gen.grid_hex())       # list[str]       — hex rows
+print(gen.solution)         # list[str]       — ['S','E','N',...]
+print(gen.entry)            # (0, 0)
+print(gen.exit)             # (19, 14)
 print(gen.forty_two_cells)  # set of (x,y) cells forming "42"
 ```
 
