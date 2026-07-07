@@ -1,32 +1,33 @@
 # ====================================================================
-# ARCHIVOS DE CONFIGURACIÓN DE EDITORES E IDEs
+# ARCHIVOS DE COMPILACIÓN DE C / C++ (Proyectos de 42)
 # ====================================================================
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.out
+a.out
+*.gch
 
-# IntelliJ IDEA (Android Studio, PyCharm, WebStorm, etc.)
+# ====================================================================
+# ARCHIVOS DE CONFIGURACIÓN DE EDITORES E IDEs (Bloqueo Total)
+# ====================================================================
 .idea/
 *.iml
 *.iws
 *.ipr
 out/
 gen/
-
-# Visual Studio Code
 .vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 *.code-workspace
 .history/
-
-# Eclipse
 .metadata/
 .classpath
 .project
 .settings/
 *.launch
-
-# NetBeans
 nbproject/private/
 build/
 nbbuild/
@@ -37,9 +38,9 @@ nbdist/
 # ====================================================================
 # ARCHIVOS BASURA DEL SISTEMA OPERATIVO
 # ====================================================================
-
 # macOS
 .DS_Store
+.DS_Store?
 .AppleDouble
 .LSOverride
 ._*
@@ -68,7 +69,7 @@ System Volume Information/
 .nfs*
 
 # ====================================================================
-# ARCHIVOS TEMPORALES Y LOGS LOGÍSTICOS
+# ARCHIVOS TEMPORALES, CACHÉ Y LOGS
 # ====================================================================
 *.log
 *.log.*
@@ -77,3 +78,6 @@ System Volume Information/
 *.swp
 *.swo
 .node_repl_history
+__pycache__/
+*.pyc
+.env
