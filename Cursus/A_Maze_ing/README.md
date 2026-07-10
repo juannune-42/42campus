@@ -93,7 +93,7 @@ python3 -m build --outdir .
 
 ## Resources
 
-- [Maze generation algorithms — Wikipedia](https://en.wikipedia.org/wiki/Maze_generation_algorithm)
+- [Maze generation algorithms Wikipedia](https://en.wikipedia.org/wiki/Maze_generation_algorithm)
 - [Buckblog maze series](https://weblog.jamisbuck.org/2011/2/7/maze-generation-algorithm-recap)
 - Python `random` and `collections.deque` docs
 

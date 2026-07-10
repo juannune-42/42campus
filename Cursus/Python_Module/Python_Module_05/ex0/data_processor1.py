@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 from typing import Any, List, Tuple, Sequence
 
 
-# Clase abstracta base
+# Abstract base class
 class DataProcessor(ABC):
     def __init__(self) -> None:
-        self.data: List[Tuple[int, str]] = []
+        self.data: list[Tuple[int, str]] = []
         self.next: int = 0
 
     @abstractmethod
@@ -18,24 +18,22 @@ class DataProcessor(ABC):
 
     def output(self) -> tuple[int, str]:
         if not self.data:
-            raise IndexError("No data available")
+            raise IndexError("No data avialable")
         return self.data.pop(0)
 
 
-# Procesador de números
+# Number processor
 class NumericProcessor(DataProcessor):
     def validate(self, data: Any) -> bool:
-        if isinstance(data, (int, float)):
-            return True
-        if isinstance(data, list):
-            if all(isinstance(_, (int, float)) for _ in data):
-                return True
-        return False
+        return isinstance(data, str) or (
+            isinstance(data, list) and all(
+                isinstance(_, str) for _ in data)
+        )
 
     def ingest(
-        self,
-        data: str | int | float | Sequence[str | int | float]
-    ) -> None:
+            self,
+            data: str | int | float | Sequence[str | int | float]
+                ) -> None:
         if not self.validate(data):
             raise ValueError("Improper numeric data")
         items = data if isinstance(data, list) else [data]
@@ -47,15 +45,13 @@ class NumericProcessor(DataProcessor):
             raise RuntimeError(f"Numeric data corruption (fatal crash): {e}")
 
 
-# Procesador de texto
+# Text processor
 class TextProcessor(DataProcessor):
     def validate(self, data: Any) -> bool:
-        if isinstance(data, str):
-            return True
-        if isinstance(data, list):
-            if all(isinstance(_, str) for _ in data):
-                return True
-        return False
+        return isinstance(data, str) or (
+            isinstance(data, list) and all(
+                isinstance(_, str) for _ in data)
+        )
 
     def ingest(self, data: str | List[str]) -> None:
         if not self.validate(data):
@@ -69,7 +65,7 @@ class TextProcessor(DataProcessor):
             raise RuntimeError(f"Text ingestion error: {e}")
 
 
-# Procesador de logs
+# Logs processor
 class LogProcessor(DataProcessor):
     def _is_log(self, data: Any) -> bool:
         return (
@@ -80,25 +76,26 @@ class LogProcessor(DataProcessor):
             )
 
     def validate(self, data: Any) -> bool:
-        if isinstance(data, list):
-            return all(self._is_log(item) for item in data)
-        return self._is_log(data)
+        return self._is_log(data) or (
+            isinstance(data, list) and all(
+                self._is_log(_) for _ in data)
+            )
 
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if not self.validate(data):
-            raise ValueError("Improper Log Data")
+            raise ValueError("Improper text data")
 
         items = data if isinstance(data, list) else [data]
 
         try:
             for item in items:
-                level = item.get("log_level", "UNKNOWN")
+                level = item.get("log_level", "UNKKNOW")
                 message = item.get("log_message", "No data available")
                 log_formatted = f"{level}: {message}"
                 self.data.append((self.next, log_formatted))
                 self.next += 1
         except Exception as e:
-            raise RuntimeError(f"Log ingestion error: {e}")
+            raise RuntimeError(f"log ingestion error: {e}")
 
 
 if __name__ == "__main__":
