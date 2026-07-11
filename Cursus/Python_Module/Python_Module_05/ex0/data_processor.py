@@ -2,40 +2,45 @@ from abc import ABC, abstractmethod
 from typing import Any, List, Tuple, Sequence
 
 
-# Clase abstracta base
+# Abstract base class
 class DataProcessor(ABC):
+    """Base class defining the common interface for all data processors."""
     def __init__(self) -> None:
-        self.data: List[Tuple[int, str]] = []
+        self.data: list[Tuple[int, str]] = []
         self.next: int = 0
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
+        """Check whether data is valid for this processor."""
         pass
 
     @abstractmethod
     def ingest(self, data: Any) -> None:
+        """Process and store data internally."""
         pass
 
     def output(self) -> tuple[int, str]:
+        """Return the oldest stored item."""
         if not self.data:
             raise IndexError("No data available")
         return self.data.pop(0)
 
 
-# Procesador de números
+# Number processor
 class NumericProcessor(DataProcessor):
+    """Processor for numeric data (int, float and lists of both)."""
     def validate(self, data: Any) -> bool:
-        if isinstance(data, (int, float)):
-            return True
-        if isinstance(data, list):
-            if all(isinstance(_, (int, float)) for _ in data):
-                return True
-        return False
+        """Check if data is an int/float or a list of int/float."""
+        return isinstance(data, (int, float)) or (
+            isinstance(data, list) and all(
+                isinstance(_, (int, float)) for _ in data)
+        )
 
     def ingest(
-        self,
-        data: str | int | float | Sequence[str | int | float]
-    ) -> None:
+            self,
+            data: int | float | Sequence[int | float]
+            ) -> None:
+        """Validate and store numeric data as strings."""
         if not self.validate(data):
             raise ValueError("Improper numeric data")
         items = data if isinstance(data, list) else [data]
@@ -47,17 +52,18 @@ class NumericProcessor(DataProcessor):
             raise RuntimeError(f"Numeric data corruption (fatal crash): {e}")
 
 
-# Procesador de texto
+# Text processor
 class TextProcessor(DataProcessor):
+    """Processor for text data (str and list of str)."""
     def validate(self, data: Any) -> bool:
-        if isinstance(data, str):
-            return True
-        if isinstance(data, list):
-            if all(isinstance(_, str) for _ in data):
-                return True
-        return False
+        """Check if data is a str or a list of str."""
+        return isinstance(data, str) or (
+            isinstance(data, list) and all(
+                isinstance(_, str) for _ in data)
+        )
 
     def ingest(self, data: str | List[str]) -> None:
+        """Validate and store text data."""
         if not self.validate(data):
             raise ValueError("Improper text data")
         items = data if isinstance(data, list) else [data]
@@ -69,36 +75,36 @@ class TextProcessor(DataProcessor):
             raise RuntimeError(f"Text ingestion error: {e}")
 
 
-# Procesador de logs
+# Logs processor
 class LogProcessor(DataProcessor):
+    """Processor for log entries (dict[str, str] and lists of them)."""
     def _is_log(self, data: Any) -> bool:
-        return (
-            isinstance(data, dict)
-            and all(
-                isinstance(key, str) and isinstance(value, str)
-                for key, value in data.items())
-            )
+        """Check if data is a dict with str key and str values."""
+        return isinstance(data, dict) and all(
+                isinstance(k, str) and isinstance(v, str)
+                for k, v in data.items()
+                )
 
     def validate(self, data: Any) -> bool:
-        if isinstance(data, list):
-            return all(self._is_log(item) for item in data)
-        return self._is_log(data)
+        """Check if data is valid log entry or a list of them."""
+        return self._is_log(data) or (
+            isinstance(data, list) and all(
+                self._is_log(_) for _ in data)
+            )
 
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
+        """Validate and store log entries formatted as 'LEVEL: message'."""
         if not self.validate(data):
-            raise ValueError("Improper Log Data")
-
+            raise ValueError("Improper text data")
         items = data if isinstance(data, list) else [data]
-
         try:
             for item in items:
                 level = item.get("log_level", "UNKNOWN")
                 message = item.get("log_message", "No data available")
-                log_formatted = f"{level}: {message}"
-                self.data.append((self.next, log_formatted))
+                self.data.append((self.next, f"{level}: {message}"))
                 self.next += 1
         except Exception as e:
-            raise RuntimeError(f"Log ingestion error: {e}")
+            raise RuntimeError(f"log ingestion error: {e}")
 
 
 if __name__ == "__main__":
@@ -109,8 +115,8 @@ if __name__ == "__main__":
     print("Testing Numeric Processor...")
     print(f"Trying to validate input '42': {num_processor.validate(42)}")
     print(
-        f"Trying to validate input 'Hello':"
-        f" {num_processor.validate('Hola')}"
+        f"Trying to validate input 'Hello': "
+        f"{num_processor.validate('Hello')}"
     )
     print("Test invalid ingestion of string 'foo' without prior validation:")
     try:
@@ -137,7 +143,7 @@ if __name__ == "__main__":
         text_processor.ingest(list_strings)
     except Exception as e:
         print(f"Got exception: {e}")
-    print(f"Processing data: {[list_strings]}")
+    print(f"Processing data: {list_strings}")
     print("Extracting 1 value...")
     key, value = text_processor.output()
     print(f"Text value {key}: {value}")
@@ -146,8 +152,8 @@ if __name__ == "__main__":
     log_processor = LogProcessor()
     print("\nTesting Log Processor...")
     print(
-        f"Trying to validate input 'Hello':"
-        f" {log_processor.validate('Hello')}")
+        f"Trying to validate input 'Hello': "
+        f"{log_processor.validate('Hello')}")
     list_logs = [
         {'log_level': 'NOTICE', 'log_message': 'Connection to sever'},
         {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
@@ -156,7 +162,7 @@ if __name__ == "__main__":
     try:
         log_processor.ingest(list_logs)
     except Exception as e:
-        print(f"Get exception: {e}")
+        print(f"Got exception: {e}")
     print("Extracting 2 values...")
     for i in range(2):
         key, value = log_processor.output()
