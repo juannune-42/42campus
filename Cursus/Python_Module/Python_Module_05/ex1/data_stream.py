@@ -49,7 +49,7 @@ class DataStream:
                     found = True
                     break
             if not found:
-                print("Data Stream error - "
+                print("DataStream error - "
                       f"Can't process element in stream: {item}")
 
     def print_processors_stats(self) -> None:
@@ -192,8 +192,20 @@ if __name__ == "__main__":
         "Numeric 3, Text 2, Log 1"
     )
     for _ in range(3):
-        num_processor.output()
+        try:
+            num_processor.output()
+        except IndexError as e:
+            print(f"No hay más datos numéricos para extraer: {e}")
+            break
     for _ in range(2):
-        text_processor.output()
-    log_processor.output()
+        try:
+            text_processor.output()
+        except IndexError as e:
+            print(f"No hay más datos de texto para extraer: {e}")
+            break
+    try:
+        log_processor.output()
+    except IndexError as e:
+        print(f"No hay más logs para extraer: {e}")
+
     data_stream.print_processors_stats()

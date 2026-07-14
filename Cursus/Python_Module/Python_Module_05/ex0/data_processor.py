@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, List, Tuple, Sequence
+from typing import Any, List, Tuple
 
 
 # Abstract base class
@@ -38,7 +38,7 @@ class NumericProcessor(DataProcessor):
 
     def ingest(
             self,
-            data: int | float | Sequence[int | float]
+            data: int | float | list[int | float]
             ) -> None:
         """Validate and store numeric data as strings."""
         if not self.validate(data):
@@ -123,7 +123,7 @@ if __name__ == "__main__":
         num_processor.ingest("foo")
     except Exception as e:
         print(f"Got exception: {e}")
-    list_nums = [1, 2, 3, 4, 5]
+    list_nums = [1, None, 3, 4, 5]
     try:
         num_processor.ingest(list_nums)
     except Exception as e:
@@ -131,8 +131,12 @@ if __name__ == "__main__":
     print(f"Processing data: {list_nums}")
     print("Extracting 3 values...")
     for i in range(3):
-        key, value = num_processor.output()
-        print(f"Numeric value: {key}: {value}")
+        try:
+            key, value = num_processor.output()
+            print(f"Numeric value: {key}: {value}")
+        except IndexError as e:
+            print(f"No hay más datos para extraer: {e}")
+            break
 
     # Tests of text processor
     text_processor = TextProcessor()
@@ -145,8 +149,11 @@ if __name__ == "__main__":
         print(f"Got exception: {e}")
     print(f"Processing data: {list_strings}")
     print("Extracting 1 value...")
-    key, value = text_processor.output()
-    print(f"Text value {key}: {value}")
+    try:
+        key, value = text_processor.output()
+        print(f"Text value {key}: {value}")
+    except IndexError as e:
+        print(f"No hay más datos para extraer: {e}")
 
     # Tests of log processor
     log_processor = LogProcessor()
@@ -165,5 +172,8 @@ if __name__ == "__main__":
         print(f"Got exception: {e}")
     print("Extracting 2 values...")
     for i in range(2):
-        key, value = log_processor.output()
-        print(f"Log entry {key}: {value}")
+        try:
+            key, value = log_processor.output()
+            print(f"Log entry {key}: {value}")
+        except IndexError as e:
+            print(f"No hay más datos para extraer: {e}")
