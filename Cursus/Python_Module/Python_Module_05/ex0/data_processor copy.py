@@ -130,7 +130,7 @@ if __name__ == "__main__":
         print(f"Got exception: {e}")
     print(f"Processing data: {list_nums}")
     print("Extracting 3 values...")
-    for i in range(3):
+    for i in range(7):
         try:
             key, value = num_processor.output()
             print(f"Numeric value: {key}: {value}")
