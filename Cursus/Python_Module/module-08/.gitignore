@@ -1,0 +1,13 @@
+# Environments
+.env
+matrix_env/
+*_env/
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated output
+ex1/matrix_analysis.png
