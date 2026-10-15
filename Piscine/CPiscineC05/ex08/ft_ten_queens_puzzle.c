@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 02:21:43 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/27 13:59:35 by juannune         ###   ########.fr       */
+/*   Updated: 2026/10/15 11:17:17 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void ft_write(int *array)
         c = array[i++] + '0';
         write(1, &c, 1);
     }
-        write(1, "\n", 1);
+    write(1, "\n", 1);
 }
 
 int ft_is_valid(int *array, int col)

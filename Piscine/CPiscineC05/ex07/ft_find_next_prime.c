@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juannune <juannune@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juannune <juannune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 02:03:24 by juannune          #+#    #+#             */
-/*   Updated: 2026/03/27 11:44:07 by juannune         ###   ########.fr       */
+/*   Updated: 2026/10/15 11:26:39 by juannune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -4,19 +4,16 @@ Spell = Callable[[str, int], str]
 
 
 def fireball(target: str, power: int) -> str:
-    """A basic damage spell."""
     return f"Fireball hits {target} for {power} damage"
 
 
 def heal(target: str, power: int) -> str:
-    """A basic restoration spell."""
     return f"Heals {target} for {power} HP"
 
 
 def spell_combiner(
     spell1: Spell, spell2: Spell
 ) -> Callable[[str, int], tuple[str, str]]:
-    """Combine two spells: cast both, return a tuple of both results."""
     if not callable(spell1) or not callable(spell2):
         raise TypeError("spell_combiner requires two callable spells")
 
@@ -27,7 +24,6 @@ def spell_combiner(
 
 
 def power_amplifier(base_spell: Spell, multiplier: int) -> Spell:
-    """Return a spell that multiplies power before casting."""
 
     def amplified(target: str, power: int) -> str:
         return base_spell(target, power * multiplier)
@@ -38,7 +34,6 @@ def power_amplifier(base_spell: Spell, multiplier: int) -> Spell:
 def conditional_caster(
     condition: Callable[[str, int], bool], spell: Spell
 ) -> Spell:
-    """Return a spell that only casts when the condition holds."""
 
     def maybe_cast(target: str, power: int) -> str:
         if condition(target, power):
@@ -51,7 +46,6 @@ def conditional_caster(
 def spell_sequence(
     spells: list[Spell],
 ) -> Callable[[str, int], list[str]]:
-    """Return a spell that casts every spell in the list, in order."""
     if not all(callable(spell) for spell in spells):
         raise TypeError("spell_sequence requires a list of callables")
 
